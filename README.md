@@ -70,37 +70,22 @@ Metrics Server
 ```text
 platform-capstone
 ├── root-app.yaml
-│
 ├── apps/
+│   ├── argocd-ingress.yaml
 │   ├── ingress-nginx.yaml
 │   ├── metrics-server.yaml
 │   ├── observability.yaml
+│   ├── observability-ingress.yaml
 │   └── poc09-app.yaml
-│
 ├── bootstrap/
 │   ├── argocd-values.yaml
 │   └── install-argocd.sh
-│
 ├── workloads/
 │   └── poc09/
-│       ├── client-cluster-ip-service.yml
-│       ├── client-deployment.yml
-│       ├── database-persistent-volume-claim.yml
-│       ├── ingress-service.yml
-│       ├── postgres-cluster-ip-service.yml
-│       ├── postgres-deployment.yml
-│       ├── postgres-secret.yaml
-│       ├── server-cluster-ip-service.yml
-│       └── server-deployment.yml
-│
 ├── values/
 │   ├── ingress-nginx-values.yaml
 │   ├── metrics-server-values.yaml
 │   └── kube-prometheus-stack-values.yaml
-│
-├── observability/
-│   └── monitoring-ingress.yaml
-│
 └── README.md
 ```
 
@@ -150,20 +135,6 @@ kubectl get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d && echo
 ```
 
-Since ingress-nginx is not yet deployed, access ArgoCD using port-forward:
-
-```bash
-kubectl port-forward svc/argocd-server \
-  -n argocd \
-  8080:80
-```
-
-Login:
-
-```bash
-argocd login localhost:8080 --insecure
-```
-
 Deploy the platform:
 
 ```bash
@@ -173,7 +144,7 @@ kubectl apply -f root-app.yaml
 Verify applications:
 
 ```bash
-argocd app list
+kubectl get applications -n argocd
 ```
 
 ---
@@ -191,34 +162,16 @@ Wave 2 → observability
 Wave 3 → poc09-app
 ```
 
-This ensures that platform services are deployed before application workloads.
+This guarantees that platform services are available before application deployment.
 
 ---
 
 ## Verify Deployment
 
-Check ArgoCD applications:
+Check applications:
 
 ```bash
-argocd app list
-```
-
-Check synchronization status:
-
-```bash
-argocd app get ingress-nginx
-
-argocd app get metrics-server
-
-argocd app get observability
-
-argocd app get poc09-app
-```
-
-Verify namespaces:
-
-```bash
-kubectl get ns
+kubectl get applications -n argocd
 ```
 
 Verify workloads:
@@ -227,38 +180,98 @@ Verify workloads:
 kubectl get pods -A
 ```
 
+Verify ingress resources:
+
+```bash
+kubectl get ingress -A
+```
+
+Expected:
+
+```text
+argocd-ingress
+monitoring-ingress
+ingress-service
+```
+
 ---
 
-## Application Access
+## Local DNS Configuration
 
 Add the following entries to `/etc/hosts`:
 
 ```text
-127.0.0.1 platform-demo.local
+127.0.0.1 argocd.local
 127.0.0.1 grafana.local
 127.0.0.1 prometheus.local
-127.0.0.1 argocd.local
+127.0.0.1 platform-demo.local
 ```
 
-Open the application:
+---
+
+## Application Access
+
+Frontend:
 
 ```text
 http://platform-demo.local
 ```
 
-Test backend connectivity:
+Backend test:
 
 ```bash
 curl http://platform-demo.local/api/values/all
 ```
 
-Expected response:
+---
 
-```json
-{
-  "rows": []
-}
+## ArgoCD Access
+
+```text
+http://argocd.local
 ```
+
+---
+
+## Grafana Access
+
+```text
+http://grafana.local
+```
+
+Default credentials:
+
+```text
+admin
+admin123
+```
+
+---
+
+## Prometheus Access
+
+```text
+http://prometheus.local
+```
+
+---
+
+## Metrics Validation
+
+Verify cluster metrics:
+
+```bash
+kubectl top nodes
+
+kubectl top pods -A
+```
+
+Verify Grafana displays:
+
+* Pod CPU
+* Pod Memory
+* Container CPU
+* Container Memory
 
 ---
 
@@ -292,108 +305,6 @@ The application uses:
 
 ---
 
-# Observability
-
-## Components
-
-The observability stack includes:
-
-* Prometheus
-* Grafana
-* Alertmanager
-* Node Exporter
-* Kube State Metrics
-* Metrics Server
-
----
-
-## Verify Observability
-
-Check pods:
-
-```bash
-kubectl get pods -n observability
-```
-
-Verify Prometheus:
-
-```bash
-kubectl get svc -n observability
-```
-
-Verify metrics collection:
-
-```bash
-kubectl top nodes
-
-kubectl top pods -A
-```
-
----
-
-## Grafana Access
-
-Open:
-
-```text
-http://grafana.local
-```
-
-Default credentials:
-
-```text
-admin
-admin123
-```
-
-Verify dashboards:
-
-* Kubernetes Cluster Overview
-* Node Metrics
-* Pod Metrics
-* Container Metrics
-
----
-
-## Prometheus Access
-
-Open:
-
-```text
-http://prometheus.local
-```
-
-Verify targets:
-
-```text
-Status → Targets
-```
-
-Expected targets:
-
-* Prometheus
-* Node Exporter
-* Kube State Metrics
-* Metrics Server
-
----
-
-## ArgoCD Access
-
-After ingress-nginx is deployed and ArgoCD ingress is configured:
-
-```text
-http://argocd.local
-```
-
-Login:
-
-```bash
-argocd login argocd.local --insecure
-```
-
----
-
 ## Validation Checklist
 
 ### GitOps
@@ -404,6 +315,13 @@ argocd login argocd.local --insecure
 * [ ] metrics-server healthy
 * [ ] observability healthy
 * [ ] poc09-app healthy
+
+### Access
+
+* [ ] argocd.local reachable
+* [ ] grafana.local reachable
+* [ ] prometheus.local reachable
+* [ ] platform-demo.local reachable
 
 ### Application
 
@@ -417,9 +335,6 @@ argocd login argocd.local --insecure
 
 * [ ] Prometheus running
 * [ ] Grafana running
-* [ ] Alertmanager running
-* [ ] Node Exporter running
-* [ ] Kube State Metrics running
 * [ ] Metrics Server running
 * [ ] kubectl top working
 * [ ] Grafana dashboards displaying metrics
@@ -440,7 +355,7 @@ Remove ArgoCD:
 kubectl delete namespace argocd
 ```
 
-Remove all platform namespaces:
+Remove platform namespaces:
 
 ```bash
 kubectl delete namespace ingress-nginx
@@ -467,6 +382,3 @@ This project demonstrates:
 * Sync Waves
 * Platform Engineering Fundamentals
 * Kubernetes Troubleshooting
-
-```
-```
