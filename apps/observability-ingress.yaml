@@ -16,7 +16,6 @@ spec:
                 name: monitoring-grafana
                 port:
                   number: 80
-
     - host: prometheus.local
       http:
         paths:
