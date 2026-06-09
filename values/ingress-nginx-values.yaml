@@ -1,0 +1,9 @@
+controller:
+  service:
+    type: LoadBalancer
+
+  metrics:
+    enabled: true
+
+  ingressClassResource:
+    default: true
