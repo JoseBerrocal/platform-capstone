@@ -46,4 +46,5 @@ jobs:
           git config user.email github-actions@github.com
           git add workloads/poc09/server-deployment.yml
           git commit -m "Update server image ${IMAGE_TAG}" || true
+          git pull --rebase origin main
           git push
