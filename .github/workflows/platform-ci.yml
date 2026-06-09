@@ -36,7 +36,6 @@ jobs:
           docker build \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/poc09-client:${IMAGE_TAG} \
             ./client
-
           docker push \
             ${{ secrets.DOCKERHUB_USERNAME }}/poc09-client:${IMAGE_TAG}
 
@@ -45,7 +44,6 @@ jobs:
           docker build \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/poc09-server:${IMAGE_TAG} \
             ./server
-
           docker push \
             ${{ secrets.DOCKERHUB_USERNAME }}/poc09-server:${IMAGE_TAG}
 
@@ -53,7 +51,6 @@ jobs:
         run: |
           sed -i "s|image: .*poc09-client:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/poc09-client:${IMAGE_TAG}|" \
             workloads/poc09/client-deployment.yml
-
           sed -i "s|image: .*poc09-server:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/poc09-server:${IMAGE_TAG}|" \
             workloads/poc09/server-deployment.yml
 
@@ -61,11 +58,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-
-          git pull --rebase origin main
-
           git add workloads/poc09/client-deployment.yml workloads/poc09/server-deployment.yml
-
-          git commit -m "Update app images ${IMAGE_TAG}" || echo "No changes to commit"
-
+          git commit -m "Update app images ${IMAGE_TAG}" || echo "No changes"
+          git pull --rebase origin main
           git push
