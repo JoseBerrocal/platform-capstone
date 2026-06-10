@@ -21,6 +21,9 @@ spec:
           image: postgres:16
           ports:
             - containerPort: 5432
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
           volumeMounts:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
@@ -31,3 +34,10 @@ spec:
                 secretKeyRef:
                   name: pgpassword
                   key: PGPASSWORD
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

@@ -17,6 +17,9 @@ spec:
           image: joseberrocal/poc09-server:350f4ff
           ports:
             - containerPort: 5000
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
           env:
             - name: PGUSER
               value: postgres
