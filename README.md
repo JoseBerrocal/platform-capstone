@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project demonstrates the deployment of a three-tier application on Kubernetes using GitOps principles and ArgoCD.
+This project demonstrates the deployment of a three-tier application on Kubernetes using GitOps principles and ArgoCD across local and cloud environments.
 
 The application consists of:
 
@@ -21,8 +21,12 @@ The platform includes:
 * Prometheus Monitoring
 * Grafana Dashboards
 * Metrics Server
+* Terraform Infrastructure as Code
+* AWS EKS Platform
+* AWS EBS CSI Driver
+* gp3 StorageClass
 
-The goal of this project is to demonstrate practical Platform Engineering skills including GitOps, application deployment, networking, storage, observability, and troubleshooting.
+The goal of this project is to demonstrate practical Platform Engineering skills including Infrastructure as Code, GitOps, application deployment, networking, storage, observability, security, and troubleshooting.
 
 ---
 
@@ -65,10 +69,33 @@ Metrics Server
 
 ---
 
+## Supported Platforms
+
+### Local
+
+* Docker Desktop Kubernetes
+
+### AWS
+
+* Amazon EKS
+* Managed Node Groups
+* AWS EBS CSI Driver
+* gp3 StorageClass
+* Terraform Infrastructure
+
+Infrastructure code is located under:
+
+```text
+terraform/aws
+```
+
+---
+
 ## Repository Structure
 
 ```text
 platform-capstone
+├── README.md
 ├── root-app.yaml
 ├── apps/
 │   ├── argocd-ingress.yaml
@@ -80,18 +107,32 @@ platform-capstone
 ├── bootstrap/
 │   ├── argocd-values.yaml
 │   └── install-argocd.sh
+├── terraform/
+│   ├── README.md
+│   └── aws/
+│       ├── README.md
+│       ├── eks.tf
+│       ├── vpc.tf
+│       ├── ebs-csi-irsa.tf
+│       ├── storageclass.tf
+│       ├── providers.tf
+│       ├── variables.tf
+│       ├── outputs.tf
+│       └── versions.tf
 ├── workloads/
 │   └── poc09/
 ├── values/
 │   ├── ingress-nginx-values.yaml
 │   ├── metrics-server-values.yaml
 │   └── kube-prometheus-stack-values.yaml
-└── README.md
+└── .github/
 ```
 
 ---
 
 ## Prerequisites
+
+### Local Kubernetes
 
 Required tools:
 
@@ -105,15 +146,87 @@ Verify installation:
 
 ```bash
 kubectl get nodes
-
 helm version
-
 argocd version --client
+```
+
+### AWS
+
+Required tools:
+
+* AWS CLI
+* Terraform
+* kubectl
+* Helm
+
+Verify AWS access:
+
+```bash
+aws sts get-caller-identity
 ```
 
 ---
 
-# Bootstrap ArgoCD
+## AWS Infrastructure Deployment
+
+Navigate to:
+
+```bash
+cd terraform/aws
+```
+
+Initialize:
+
+```bash
+terraform init
+```
+
+Validate:
+
+```bash
+terraform fmt -recursive
+terraform validate
+```
+
+Plan:
+
+```bash
+terraform plan
+```
+
+Deploy:
+
+```bash
+terraform apply
+```
+
+Configure kubectl:
+
+```bash
+aws eks update-kubeconfig \
+  --region eu-west-1 \
+  --name platform-capstone
+```
+
+Verify:
+
+```bash
+kubectl get nodes
+kubectl get pods -A
+kubectl get storageclass
+```
+
+Expected:
+
+```text
+Node Ready
+EBS CSI ACTIVE
+gp3 (default)
+```
+
+---
+
+## Bootstrap ArgoCD
 
 Install ArgoCD:
 
@@ -121,7 +234,7 @@ Install ArgoCD:
 ./bootstrap/install-argocd.sh
 ```
 
-Verify ArgoCD:
+Verify:
 
 ```bash
 kubectl get pods -n argocd
@@ -153,8 +266,6 @@ kubectl get applications -n argocd
 
 The platform uses ArgoCD Sync Waves.
 
-Deployment order:
-
 ```text
 Wave 0 → ingress-nginx
 Wave 1 → metrics-server
@@ -168,19 +279,19 @@ This guarantees that platform services are available before application deployme
 
 ## Verify Deployment
 
-Check applications:
+Applications:
 
 ```bash
 kubectl get applications -n argocd
 ```
 
-Verify workloads:
+Workloads:
 
 ```bash
 kubectl get pods -A
 ```
 
-Verify ingress resources:
+Ingress:
 
 ```bash
 kubectl get ingress -A
@@ -191,14 +302,14 @@ Expected:
 ```text
 argocd-ingress
 monitoring-ingress
-ingress-service
+platform-demo
 ```
 
 ---
 
 ## Local DNS Configuration
 
-Add the following entries to `/etc/hosts`:
+For local environments add:
 
 ```text
 127.0.0.1 argocd.local
@@ -217,7 +328,7 @@ Frontend:
 http://platform-demo.local
 ```
 
-Backend test:
+Backend:
 
 ```bash
 curl http://platform-demo.local/api/values/all
@@ -262,11 +373,10 @@ Verify cluster metrics:
 
 ```bash
 kubectl top nodes
-
 kubectl top pods -A
 ```
 
-Verify Grafana displays:
+Verify Grafana dashboards display:
 
 * Pod CPU
 * Pod Memory
@@ -276,8 +386,6 @@ Verify Grafana displays:
 ---
 
 ## Kubernetes Resources
-
-The application uses:
 
 ### Deployments
 
@@ -294,6 +402,8 @@ The application uses:
 ### Storage
 
 * Persistent Volume Claim
+* AWS EBS CSI Driver
+* gp3 StorageClass
 
 ### Secrets
 
@@ -306,6 +416,14 @@ The application uses:
 ---
 
 ## Validation Checklist
+
+### Infrastructure
+
+* [ ] Terraform applied successfully
+* [ ] EKS cluster active
+* [ ] Node group healthy
+* [ ] EBS CSI active
+* [ ] gp3 default StorageClass
 
 ### GitOps
 
@@ -325,8 +443,8 @@ The application uses:
 
 ### Application
 
-* [ ] Frontend reachable through Ingress
-* [ ] Backend reachable through Ingress
+* [ ] Frontend reachable
+* [ ] Backend reachable
 * [ ] PostgreSQL running
 * [ ] PVC bound
 * [ ] Secret configured
@@ -337,30 +455,37 @@ The application uses:
 * [ ] Grafana running
 * [ ] Metrics Server running
 * [ ] kubectl top working
-* [ ] Grafana dashboards displaying metrics
+* [ ] Dashboards displaying metrics
 
 ---
 
 ## Cleanup
 
-Remove the root application:
+Delete ArgoCD application:
 
 ```bash
 kubectl delete -f root-app.yaml
 ```
 
-Remove ArgoCD:
+Delete ArgoCD:
 
 ```bash
 kubectl delete namespace argocd
 ```
 
-Remove platform namespaces:
+Delete platform namespaces:
 
 ```bash
 kubectl delete namespace ingress-nginx
 kubectl delete namespace observability
 kubectl delete namespace poc09
+```
+
+Delete AWS infrastructure:
+
+```bash
+cd terraform/aws
+terraform destroy
 ```
 
 ---
@@ -369,10 +494,15 @@ kubectl delete namespace poc09
 
 This project demonstrates:
 
+* Terraform
+* Infrastructure as Code
+* Amazon EKS
 * Kubernetes Workloads
 * Kubernetes Networking
 * Kubernetes Storage
 * Kubernetes Secrets
+* AWS EBS CSI Driver
+* gp3 StorageClass
 * NGINX Ingress
 * Metrics Server
 * Prometheus Monitoring
@@ -382,3 +512,4 @@ This project demonstrates:
 * Sync Waves
 * Platform Engineering Fundamentals
 * Kubernetes Troubleshooting
+* Cloud-Native Operations
