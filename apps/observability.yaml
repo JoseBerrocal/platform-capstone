@@ -19,9 +19,14 @@ spec:
       targetRevision: main
       ref: values
       
+    - repoURL: https://github.com/JoseBerrocal/platform-capstone.git
+      targetRevision: main
+      path: observability
+
   destination:
     server: https://kubernetes.default.svc
     namespace: observability
+    
   syncPolicy:
     automated:
       prune: true
