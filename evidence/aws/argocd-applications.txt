@@ -1,0 +1,6 @@
+NAME             SYNC STATUS   HEALTH STATUS
+ingress-nginx    Synced        Healthy
+metrics-server   Synced        Healthy
+observability    Synced        Progressing
+platform-root    Synced        Healthy
+poc09-app        Synced        Healthy

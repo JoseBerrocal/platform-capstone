@@ -1,0 +1,4 @@
+NAMESPACE       NAME                    CLASS   HOSTS                            ADDRESS                                                                 PORTS   AGE
+argocd          argocd-ingress          nginx   argocd.local                     a2e576e0c70aa4ded9fdb55e1e67a550-60556250.eu-west-1.elb.amazonaws.com   80      8h
+observability   observability-ingress   nginx   grafana.local,prometheus.local   a2e576e0c70aa4ded9fdb55e1e67a550-60556250.eu-west-1.elb.amazonaws.com   80      3h47m
+poc09           ingress-service         nginx   platform-demo.local              a2e576e0c70aa4ded9fdb55e1e67a550-60556250.eu-west-1.elb.amazonaws.com   80      5h16m
