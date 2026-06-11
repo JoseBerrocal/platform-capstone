@@ -21,6 +21,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Set image tag
         run: echo "IMAGE_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
@@ -61,4 +62,4 @@ jobs:
           git add workloads/poc09/client-deployment.yml workloads/poc09/server-deployment.yml
           git commit -m "Update app images ${IMAGE_TAG}" || echo "No changes"
           git pull --rebase origin main
-          git push
+          git push origin HEAD:main
