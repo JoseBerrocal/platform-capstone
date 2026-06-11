@@ -22,7 +22,7 @@ spec:
           ports:
             - containerPort: 5432
           securityContext:
-            runAsNonRoot: true
+            runAsNonRoot: false
             allowPrivilegeEscalation: false
           volumeMounts:
             - name: postgres-storage
