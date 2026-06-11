@@ -1,0 +1,11 @@
+aws_region = "eu-west-1"
+
+cluster_name = "platform-capstone"
+
+vpc_cidr = "10.0.0.0/16"
+
+public_access_cidrs = [
+  "X.X.X.X/32"
+]
+
+cluster_admin_arn = "arn:aws:iam::<ACCOUNT_ID>:user/<IAM_USER>"
