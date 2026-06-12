@@ -1,0 +1,3 @@
+NAMESPACE            NAME                        CREATED AT
+poc10-aks-tenant-a   poc10-aks-tenant-a-limits   2026-06-12T05:28:12Z
+poc10-aks-tenant-b   poc10-aks-tenant-b-limits   2026-06-12T05:28:12Z
