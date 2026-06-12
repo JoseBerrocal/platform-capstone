@@ -1,0 +1,3 @@
+NAME                             CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+aks-system-26419528-vmss000000   213m         11%      3483Mi          48%         
+aks-system-26419528-vmss000001   193m         10%      1736Mi          24%         

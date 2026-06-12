@@ -1,0 +1,5 @@
+NAMESPACE            NAME                    CLASS   HOSTS                            ADDRESS           PORTS   AGE
+argocd               argocd-ingress          nginx   argocd.local                     135.225.240.167   80      44m
+observability        observability-ingress   nginx   grafana.local,prometheus.local   135.225.240.167   80      22m
+poc10-aks-tenant-a   ingress-service         nginx   tenant-a.platform-demo.local     135.225.240.167   80      44m
+poc10-aks-tenant-b   ingress-service         nginx   tenant-b.platform-demo.local     135.225.240.167   80      44m
