@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+  namespace: poc10-aks-tenant-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: joseberrocal/poc09-client:ef84342
+          ports:
+            - containerPort: 3000
+          securityContext:
+            runAsNonRoot: false
+            allowPrivilegeEscalation: false

@@ -67,4 +67,4 @@ terraform/**/*_override.tf.json
 # OS
 # =========================
 
-.DS_Store
+.DS_Storeapps/disabled/
