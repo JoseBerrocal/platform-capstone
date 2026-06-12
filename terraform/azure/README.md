@@ -1,3 +1,39 @@
+## AKS Workload Identity
+
+The cluster enables OIDC and Azure Workload Identity.
+
+```hcl
+oidc_issuer_enabled       = true
+workload_identity_enabled = true
+```
+
+This provides the Azure equivalent of AWS IRSA and allows Kubernetes ServiceAccounts to authenticate to Azure resources without storing credentials inside pods.
+
+---
+
+## Platform Components
+
+This infrastructure deploys:
+
+- Resource Group
+- Virtual Network
+- AKS Cluster
+- Azure Container Registry (ACR)
+- Managed Identity
+- Azure Workload Identity
+- Custom StorageClass
+- API Server IP Restrictions
+
+### Validation:
+
+```bash
+kubectl get nodes
+kubectl get storageclass
+az acr list -o table
+```
+
+---
+
 ## Troubleshooting
 
 ### 1. Show only families with quota
@@ -24,10 +60,10 @@ az vm list-skus --location swedencentral --resource-type virtualMachines \
 aks_node_size = "Standard_D2_v4"
 ```
 
-That’s the shortest practical flow:
-
+That’s the shortest practical flow:  
 **quota family → matching small VM size → Terraform.**
 
+---
 
 ## StorageClass Ownership
 
@@ -35,7 +71,7 @@ AKS creates several built-in StorageClasses automatically:
 
 ```bash
 kubectl get storageclass
-````
+```
 
 Example:
 
@@ -55,7 +91,7 @@ The platform creates and manages its own StorageClass:
 managed-csi-platform
 ```
 
-Terraform:
+Terraform resource:
 
 ```hcl
 resource "kubernetes_storage_class_v1" "managed_csi" {
@@ -103,26 +139,26 @@ managed-csi-platform (default)
 
 This demonstrates platform ownership of the default storage policy instead of relying on AKS defaults.
 
-```
+---
 
-This fits nicely with the rest of your README because it explains **why** you created `managed-csi-platform`, not just how.
-```
+## Azure LoadBalancer Troubleshooting
 
-### Azure LoadBalancer Troubleshooting
-
-Issue:
-- DNS worked
-- Ingress worked internally
+**Issue:**  
+- DNS worked  
+- Ingress worked internally  
 - External access to LoadBalancer IP hung
 
-Fix:
+**Fix:**
 
 ```bash
 kubectl patch svc ingress-nginx-controller \
   -n ingress-nginx \
   -p '{"spec":{"externalTrafficPolicy":"Local"}}'
+```
 
-Result:
+**Result:**
 
+```text
 Azure LoadBalancer started routing traffic correctly
 Applications became accessible through ingress hostnames
+```

@@ -1,8 +1,35 @@
-# AWS EKS Platform
+# Platform Capstone
 
-Terraform configuration for the AWS implementation of the Platform Capstone project.
+Multi-cloud Platform Engineering project demonstrating Kubernetes platform deployment on AWS EKS and Azure AKS using Terraform, GitOps, and Observability.
 
-## Resources
+## Technologies
+
+* Terraform
+* Kubernetes
+* AWS EKS
+* Azure AKS
+* ArgoCD
+* NGINX Ingress
+* Prometheus
+* Grafana
+* Docker
+
+## Features
+
+* Infrastructure as Code with Terraform
+* GitOps deployments with ArgoCD
+* Multi-tenant application deployment
+* Ingress-based traffic routing
+* Cluster observability with Prometheus and Grafana
+* AKS Cluster Autoscaling
+* Persistent storage configuration
+* AWS and Azure implementations
+
+## Cloud Implementations
+
+### AWS EKS
+
+Resources:
 
 * VPC
 * Public Subnets
@@ -17,56 +44,34 @@ Terraform configuration for the AWS implementation of the Platform Capstone proj
 * AWS EBS CSI Driver
 * gp3 StorageClass
 
-## Prerequisites
+### Azure AKS
 
-* AWS CLI
-* Terraform
-* kubectl
-* AWS Credentials
+Resources:
 
-## Initialize
+* Resource Group
+* Virtual Network
+* AKS Cluster
+* System Node Pool
+* Cluster Autoscaler
+* Azure Disk CSI Driver
+* NGINX Ingress Controller
+* ArgoCD
+* Prometheus
+* Grafana
 
-```bash
-terraform init
-```
-
-## Validate
-
-```bash
-terraform fmt -recursive
-terraform validate
-```
-
-## Plan
-
-```bash
-terraform plan
-```
-
-## Deploy
-
-```bash
-terraform apply
-```
-
-## Configure kubectl
-
-```bash
-aws eks update-kubeconfig \
-  --region eu-west-1 \
-  --name platform-capstone
-```
-
-## Verify
+## Verification
 
 ```bash
 kubectl get nodes
 kubectl get pods -A
-kubectl get storageclass
+kubectl get ingress -A
 ```
 
-## Destroy
+## Evidence
 
-```bash
-terraform destroy
+Deployment evidence is available under:
+
+```text
+evidence/aws
+evidence/azure
 ```

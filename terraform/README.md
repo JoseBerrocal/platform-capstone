@@ -5,7 +5,7 @@ Infrastructure as Code for the Platform Capstone project.
 ## Providers
 
 * AWS (EKS)
-* Azure (AKS) - Planned
+* Azure (AKS)
 
 ## Structure
 
@@ -16,6 +16,16 @@ terraform/
 └── azure/
 ```
 
+## Features
+
+* Terraform Infrastructure as Code
+* AWS EKS deployment
+* Azure AKS deployment
+* Managed Kubernetes clusters
+* Autoscaling node pools
+* Cloud-native storage integration
+* Reusable variables and environment configuration
+
 ## Deploy
 
 Navigate to the desired provider directory and execute:
@@ -24,4 +34,17 @@ Navigate to the desired provider directory and execute:
 terraform init
 terraform plan
 terraform apply
+```
+
+## Validate
+
+```bash
+terraform fmt -recursive
+terraform validate
+```
+
+## Destroy
+
+```bash
+terraform destroy
 ```
