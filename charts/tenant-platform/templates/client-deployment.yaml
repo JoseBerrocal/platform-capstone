@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+  namespace: {{ .Values.tenant.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: {{ .Values.client.image }}
+          ports:
+            - containerPort: 3000
+          securityContext:
+            runAsNonRoot: false
+            allowPrivilegeEscalation: false

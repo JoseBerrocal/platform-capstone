@@ -1,0 +1,24 @@
+tenant:
+  name: poc10-aks-tenant-a
+  host: tenant-a.platform-demo.local
+
+client:
+  image: joseberrocal/poc09-client:ef84342
+
+server:
+  image: joseberrocal/poc09-server:ef84342
+
+postgres:
+  image: postgres:16
+  passwordSecretName: pgpassword
+
+resources:
+  client: {}
+  server: {}
+  postgres:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
