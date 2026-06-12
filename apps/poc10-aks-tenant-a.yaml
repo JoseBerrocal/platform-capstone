@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: poc10-aks-tenant-a
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/JoseBerrocal/platform-capstone.git
+    targetRevision: main
+    path: workloads/poc10-aks/poc10-aks-tenant-a
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: poc10-aks-tenant-a
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
