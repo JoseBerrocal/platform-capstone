@@ -107,3 +107,22 @@ This demonstrates platform ownership of the default storage policy instead of re
 
 This fits nicely with the rest of your README because it explains **why** you created `managed-csi-platform`, not just how.
 ```
+
+### Azure LoadBalancer Troubleshooting
+
+Issue:
+- DNS worked
+- Ingress worked internally
+- External access to LoadBalancer IP hung
+
+Fix:
+
+```bash
+kubectl patch svc ingress-nginx-controller \
+  -n ingress-nginx \
+  -p '{"spec":{"externalTrafficPolicy":"Local"}}'
+
+Result:
+
+Azure LoadBalancer started routing traffic correctly
+Applications became accessible through ingress hostnames
