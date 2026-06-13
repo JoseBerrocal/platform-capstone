@@ -1,68 +1,43 @@
-Yes. For a recruiter or hiring manager, your current README is too long. A concise version is stronger.
-
-Keep:
-
-```text
-Introduction
-Architecture
-Supported Platforms
-Repository Structure
-Deployment
-POC10 Multi-Tenancy
-Validation
-Learning Objectives
-```
-
-Remove most of:
-
-```text
-Detailed AWS deployment steps
-Detailed ArgoCD installation steps
-Detailed validation commands
-Detailed cleanup steps
-```
-
-Those belong in provider-specific READMEs.
-
-A good root README should be around **150-250 lines**, not 500+.
-
-Structure:
-
-````md
 # Platform Capstone
 
 ## Overview
 
 Platform Engineering project demonstrating:
 
-- AWS EKS
-- Azure AKS
-- Terraform
-- ArgoCD GitOps
-- Helm
-- Multi-tenant Kubernetes workloads
-- Prometheus & Grafana
-- NGINX Ingress
+* AWS EKS
+* Azure AKS
+* Terraform
+* ArgoCD GitOps
+* Helm
+* Multi-tenant Kubernetes workloads
+* Prometheus & Grafana
+* NGINX Ingress
 
 Application stack:
 
-- React
-- Node.js
-- PostgreSQL
+* React
+* Node.js
+* PostgreSQL
 
 ---
 
 ## Architecture
 
-Git
-  ↓
-ArgoCD
-  ↓
+```text
+Git Repository
+      |
+      v
+    ArgoCD
+      |
+      v
 Platform Services
-  ↓
+      |
+      v
 Tenant Workloads
-  ↓
+      |
+      v
 React + Node.js + PostgreSQL
+```
 
 ---
 
@@ -70,27 +45,55 @@ React + Node.js + PostgreSQL
 
 ### AWS
 
-- EKS
-- Managed Node Groups
-- EBS CSI Driver
-- gp3 StorageClass
+Features:
 
-Code:
+* EKS
+* Managed Node Groups
+* EBS CSI Driver
+* gp3 StorageClass
+
+Infrastructure code:
 
 ```text
 terraform/aws
-````
+```
 
 ### Azure
+
+Features:
 
 * AKS
 * Azure Managed Disks
 * Azure Network Policies
 
-Code:
+Infrastructure code:
 
 ```text
 terraform/azure
+```
+
+---
+
+## GitOps Platform
+
+Platform services managed through ArgoCD:
+
+* Ingress NGINX
+* Metrics Server
+* Prometheus
+* Grafana
+* Tenant Applications
+
+Applications:
+
+```text
+apps/
+```
+
+Bootstrap:
+
+```text
+bootstrap/
 ```
 
 ---
@@ -107,7 +110,7 @@ Features:
 * Helm tenant onboarding
 * ArgoCD GitOps
 
-Tenant onboarding:
+Reusable Helm chart:
 
 ```text
 charts/tenant-platform
@@ -121,6 +124,13 @@ workloads/poc10-aks/
 └── tenant-b-values.yaml
 ```
 
+Deployment options:
+
+* Raw Kubernetes manifests
+* Helm chart
+* OCI Helm chart via GitHub Container Registry (GHCR)
+* ArgoCD OCI deployment
+
 ---
 
 ## Repository Structure
@@ -128,13 +138,19 @@ workloads/poc10-aks/
 ```text
 platform-capstone
 ├── apps/
+├── artifacts/
+├── bootstrap/
 ├── charts/
-├── workloads/
+├── client/
+├── docs/
+├── evidence/
+├── observability/
+├── server/
 ├── terraform/
 │   ├── aws/
 │   └── azure/
-├── bootstrap/
-├── evidence/
+├── values/
+├── workloads/
 └── README.md
 ```
 
@@ -142,10 +158,21 @@ platform-capstone
 
 ## Validation
 
+Verify ArgoCD:
+
 ```bash
 kubectl get applications -n argocd
-kubectl get pods -A
+```
 
+Verify workloads:
+
+```bash
+kubectl get pods -A
+```
+
+Validate Helm chart:
+
+```bash
 helm template tenant-a charts/tenant-platform \
   -f workloads/poc10-aks/tenant-a-values.yaml
 
@@ -157,11 +184,23 @@ helm template tenant-b charts/tenant-platform \
 
 ## Evidence
 
-Deployment evidence is available under:
+Deployment evidence and screenshots:
 
 ```text
 evidence/aws
 evidence/azure
+```
+
+---
+
+## Documentation
+
+```text
+docs/
+├── poc09.md
+├── poc10-phase1-aks.md
+├── poc10-phase2-helm.md
+└── platform-operations.md
 ```
 
 ---
@@ -173,13 +212,10 @@ evidence/azure
 * Azure AKS
 * ArgoCD GitOps
 * Helm
+* OCI Registries
+* GitHub Container Registry (GHCR)
 * Kubernetes Networking
 * Kubernetes Storage
 * Multi-Tenant Platforms
 * Observability
 * Platform Engineering
-
-```
-
-This is much more aligned with what a recruiter, interviewer, or GitHub visitor will actually read.
-```
