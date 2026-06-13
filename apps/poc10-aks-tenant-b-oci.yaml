@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: oci://ghcr.io/joseberrocal/charts
+    - repoURL: ghcr.io/joseberrocal/charts
       chart: tenant-platform
       targetRevision: 0.1.0
       helm:
