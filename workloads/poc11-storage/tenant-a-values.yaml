@@ -11,7 +11,7 @@ server:
 postgres:
   image: postgres:16
   passwordSecretName: pgpassword
-  storageClassName: managed-csi-platform
+  storageClassName: broken-storage
   storageSize: 1Gi
 
 resources:
