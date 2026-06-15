@@ -1,0 +1,16 @@
+Name:          database-persistent-volume-claim
+Namespace:     poc11-aks-tenant-a
+StorageClass:  broken-storage
+Status:        Pending
+Volume:        
+Labels:        <none>
+Annotations:   argocd.argoproj.io/tracking-id: poc11-aks-tenant-a-oci:/PersistentVolumeClaim:poc11-aks-tenant-a/database-persistent-volume-claim
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      
+Access Modes:  
+VolumeMode:    Filesystem
+Used By:       postgres-deployment-79679cc7b4-mjhws
+Events:
+  Type     Reason              Age                  From                         Message
+  ----     ------              ----                 ----                         -------
+  Warning  ProvisioningFailed  1s (x642 over 160m)  persistentvolume-controller  storageclass.storage.k8s.io "broken-storage" not found

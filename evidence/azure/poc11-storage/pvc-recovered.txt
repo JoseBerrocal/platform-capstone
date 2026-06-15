@@ -1,0 +1,2 @@
+NAME                               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS           VOLUMEATTRIBUTESCLASS   AGE
+database-persistent-volume-claim   Bound    pvc-5443c3a8-2f62-4831-9bc9-56cbf53dc3f1   1Gi        RWO            managed-csi-platform   <unset>                 5m58s

@@ -1,0 +1,4 @@
+LAST SEEN   TYPE      REASON               OBJECT                                                   MESSAGE
+3m49s       Normal    NotTriggerScaleUp    pod/postgres-deployment-79679cc7b4-mjhws                 pod didn't trigger scale-up: 1 max node group size reached
+2s          Warning   ProvisioningFailed   persistentvolumeclaim/database-persistent-volume-claim   storageclass.storage.k8s.io "broken-storage" not found
+4m39s       Warning   FailedScheduling     pod/postgres-deployment-79679cc7b4-mjhws                 0/2 nodes are available: pod has unbound immediate PersistentVolumeClaims. not found

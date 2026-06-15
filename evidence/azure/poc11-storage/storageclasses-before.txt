@@ -1,0 +1,11 @@
+NAME                             PROVISIONER          RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+azurefile                        file.csi.azure.com   Delete          Immediate              true                   24m
+azurefile-csi                    file.csi.azure.com   Delete          Immediate              true                   24m
+azurefile-csi-premium            file.csi.azure.com   Delete          Immediate              true                   24m
+azurefile-premium                file.csi.azure.com   Delete          Immediate              true                   24m
+default                          disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   24m
+managed                          disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   24m
+managed-csi                      disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   24m
+managed-csi-platform (default)   disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   23m
+managed-csi-premium              disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   24m
+managed-premium                  disk.csi.azure.com   Delete          WaitForFirstConsumer   true                   24m

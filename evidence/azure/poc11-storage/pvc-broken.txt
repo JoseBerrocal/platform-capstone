@@ -1,0 +1,2 @@
+NAME                               STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS     VOLUMEATTRIBUTESCLASS   AGE
+database-persistent-volume-claim   Pending                                      broken-storage   <unset>                 160m
