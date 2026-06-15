@@ -1,0 +1,6 @@
+NAMESPACE            NAME                               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+poc09                database-persistent-volume-claim   Bound    pvc-a4e3b36f-eeb5-4908-8271-77c1ce907bd4   1Gi        RWO            standard       <unset>                 5d14h
+poc10-aks-tenant-a   database-persistent-volume-claim   Bound    pvc-f072d1c9-b71a-4458-9857-e61cafc8ce9a   1Gi        RWO            standard       <unset>                 2d23h
+poc10-aks-tenant-b   database-persistent-volume-claim   Bound    pvc-09247952-467b-4cfb-b247-8550c409baa9   1Gi        RWO            standard       <unset>                 2d23h
+poc12-tenant-a       database-persistent-volume-claim   Bound    pvc-3b1a4190-7a8a-45bd-93e5-fefd371540c7   1Gi        RWO            standard       <unset>                 66m
+poc12-tenant-b       database-persistent-volume-claim   Bound    pvc-4f560ece-ab52-4f9b-af43-6102c22f147c   1Gi        RWO            standard       <unset>                 66m

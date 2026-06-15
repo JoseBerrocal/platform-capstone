@@ -1,0 +1,4 @@
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+client-deployment     1/1     1            1           69m
+postgres-deployment   1/1     1            1           69m
+server-deployment     1/1     1            1           69m
