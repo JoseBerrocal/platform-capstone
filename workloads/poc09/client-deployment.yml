@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: joseberrocal/poc09-client:d6f86c0
+          image: joseberrocal/poc09-client:451837a
           ports:
             - containerPort: 3000
           securityContext:
