@@ -200,6 +200,7 @@ docs/
 ├── poc09.md
 ├── poc10-phase1-aks.md
 ├── poc10-phase2-helm.md
+├── poc11-stateful-storage-recovery.md
 └── platform-operations.md
 ```
 
