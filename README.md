@@ -12,6 +12,10 @@ Platform Engineering project demonstrating:
 * Multi-tenant Kubernetes workloads
 * Prometheus & Grafana
 * NGINX Ingress
+* Kubernetes Networking
+* Stateful Workload Recovery
+* GitOps Drift Recovery
+* Production Incident Troubleshooting
 
 Application stack:
 
@@ -133,6 +137,53 @@ Deployment options:
 
 ---
 
+## Operational Recovery Scenarios
+
+The repository includes operational Kubernetes recovery exercises focused on real-world production incidents.
+
+### POC11 — Stateful Storage Recovery
+
+Focus:
+
+- Persistent Volumes
+- Persistent Volume Claims
+- StorageClass
+- PostgreSQL recovery
+- Stateful workload troubleshooting
+
+### POC12 — GitOps Drift Recovery
+
+Focus:
+
+- ArgoCD reconciliation
+- Drift detection
+- Git as source of truth
+- Automated recovery
+
+### POC13 — Kubernetes Networking Incident
+
+Focus:
+
+- Services
+- Endpoints
+- Ingress
+- NetworkPolicy
+- Production networking troubleshooting
+
+Typical troubleshooting workflow:
+
+```text
+Ingress
+   ↓
+Service
+   ↓
+Endpoints
+   ↓
+Pod
+```
+
+---
+
 ## Repository Structure
 
 ```text
@@ -200,8 +251,12 @@ docs/
 ├── poc09.md
 ├── poc10-phase1-aks.md
 ├── poc10-phase2-helm.md
+├── poc10-phase3-oci.md
 ├── poc11-stateful-storage-recovery.md
-└── platform-operations.md
+├── poc12-gitops-drift-recovery.md
+├── poc13-kubernetes-networking-incident.md
+├── platform-operations.md
+└── README.md
 ```
 
 ---
