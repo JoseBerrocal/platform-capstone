@@ -1,0 +1,2 @@
+NAME              CLASS   HOSTS                          ADDRESS      PORTS   AGE
+ingress-service   nginx   tenant-a.platform-demo.local   172.18.0.5   80      165m

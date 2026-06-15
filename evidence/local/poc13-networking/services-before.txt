@@ -1,0 +1,4 @@
+NAME                          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+client-cluster-ip-service     ClusterIP   10.96.243.164   <none>        3000/TCP   3h35m
+postgres-cluster-ip-service   ClusterIP   10.96.111.209   <none>        5432/TCP   3h35m
+server-cluster-ip-service     ClusterIP   10.96.188.172   <none>        5000/TCP   3h35m

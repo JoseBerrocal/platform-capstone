@@ -1,0 +1,16 @@
+Name:                     server-cluster-ip-service
+Namespace:                poc12-tenant-a
+Labels:                   <none>
+Annotations:              argocd.argoproj.io/tracking-id: poc12-tenant-a-oci:/Service:poc12-tenant-a/server-cluster-ip-service
+Selector:                 component=wrong-server
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.96.188.172
+IPs:                      10.96.188.172
+Port:                     <unset>  5000/TCP
+TargetPort:               5000/TCP
+Endpoints:                
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>

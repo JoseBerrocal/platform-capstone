@@ -1,0 +1,11 @@
+Name:         deny-server-egress
+Namespace:    poc12-tenant-a
+Created on:   2026-06-15 08:40:23 +0200 CEST
+Labels:       <none>
+Annotations:  <none>
+Spec:
+  PodSelector:     component=server
+  Not affecting ingress traffic
+  Allowing egress traffic:
+    <none> (Selected pods are isolated for egress connectivity)
+  Policy Types: Egress

@@ -1,0 +1,4 @@
+NAME                          ENDPOINTS           AGE
+client-cluster-ip-service     10.244.0.100:3000   3h36m
+postgres-cluster-ip-service   10.244.0.105:5432   3h36m
+server-cluster-ip-service     <none>              3h36m

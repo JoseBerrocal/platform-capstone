@@ -1,0 +1,4 @@
+NAME                                   READY   STATUS    RESTARTS   AGE
+client-deployment-855df6fd79-fbv2n     1/1     Running   0          3h35m
+postgres-deployment-79679cc7b4-rq6jc   1/1     Running   0          3h35m
+server-deployment-754698b447-cxt4p     1/1     Running   0          3h35m

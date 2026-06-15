@@ -1,0 +1,4 @@
+NAME                                   READY   STATUS    RESTARTS   AGE     LABELS
+client-deployment-855df6fd79-fbv2n     1/1     Running   0          3h36m   component=web,pod-template-hash=855df6fd79
+postgres-deployment-79679cc7b4-rq6jc   1/1     Running   0          3h36m   component=postgres,pod-template-hash=79679cc7b4
+server-deployment-754698b447-cxt4p     1/1     Running   0          3h36m   component=server,pod-template-hash=754698b447

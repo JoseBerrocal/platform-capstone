@@ -1,0 +1,19 @@
+Name:             ingress-service
+Labels:           <none>
+Namespace:        poc12-tenant-a
+Address:          172.18.0.5
+Ingress Class:    nginx
+Default backend:  <default>
+Rules:
+  Host                          Path  Backends
+  ----                          ----  --------
+  tenant-a.platform-demo.local  
+                                /api/(.*)   wrong-service:5000 (<error: services "wrong-service" not found>)
+                                /(.*)       client-cluster-ip-service:3000 (10.244.0.100:3000)
+Annotations:                    argocd.argoproj.io/tracking-id: poc12-tenant-a-oci:networking.k8s.io/Ingress:poc12-tenant-a/ingress-service
+                                nginx.ingress.kubernetes.io/rewrite-target: /$1
+                                nginx.ingress.kubernetes.io/use-regex: true
+Events:
+  Type    Reason  Age                 From                      Message
+  ----    ------  ----                ----                      -------
+  Normal  Sync    90s (x3 over 171m)  nginx-ingress-controller  Scheduled for sync

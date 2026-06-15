@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: poc12-tenant-a-oci:/Service:poc12-tenant-a/server-cluster-ip-service
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"poc12-tenant-a-oci:/Service:poc12-tenant-a/server-cluster-ip-service"},"name":"server-cluster-ip-service","namespace":"poc12-tenant-a"},"spec":{"ports":[{"port":5000,"targetPort":5000}],"selector":{"component":"server"},"type":"ClusterIP"}}
+  creationTimestamp: "2026-06-15T02:56:06Z"
+  name: server-cluster-ip-service
+  namespace: poc12-tenant-a
+  resourceVersion: "439907"
+  uid: 61a57774-e7ab-4ff5-ae9b-c1d572ef2796
+spec:
+  clusterIP: 10.96.188.172
+  clusterIPs:
+  - 10.96.188.172
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    component: wrong-server
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

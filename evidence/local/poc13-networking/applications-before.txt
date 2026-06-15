@@ -1,0 +1,7 @@
+NAME                 SYNC STATUS   HEALTH STATUS
+ingress-nginx        Synced        Healthy
+metrics-server       Synced        Healthy
+observability        Synced        Healthy
+platform-root        OutOfSync     Healthy
+poc12-tenant-a-oci   Synced        Healthy
+poc12-tenant-b-oci   Synced        Healthy

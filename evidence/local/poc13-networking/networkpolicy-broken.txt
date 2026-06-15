@@ -1,0 +1,10 @@
+NAME                              POD-SELECTOR         AGE
+allow-client-egress-to-server     component=web        3h45m
+allow-client-to-server            component=server     3h45m
+allow-dns                         <none>               3h45m
+allow-ingress-to-client           component=web        3h45m
+allow-ingress-to-server           component=server     3h45m
+allow-server-egress-to-postgres   component=server     3h45m
+allow-server-to-postgres          component=postgres   3h45m
+deny-server-egress                component=server     64s
+poc12-tenant-a-default-deny       <none>               3h45m
