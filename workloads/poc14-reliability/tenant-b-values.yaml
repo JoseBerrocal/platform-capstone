@@ -1,0 +1,28 @@
+tenant:
+  name: poc14-reliability-tenant-b
+  host: tenant-b.platform-demo.local
+
+client:
+  image: joseberrocal/poc09-client:ef84342
+  replicas: 2
+
+server:
+  image: joseberrocal/poc09-server:ef84342
+  replicas: 3
+
+postgres:
+  image: postgres:16
+  passwordSecretName: pgpassword
+  storageClassName: standard
+  storageSize: 1Gi
+
+resources:
+  client: {}
+  server: {}
+  postgres:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
