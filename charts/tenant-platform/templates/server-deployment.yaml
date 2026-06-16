@@ -4,7 +4,7 @@ metadata:
   name: server-deployment
   namespace: {{ .Values.tenant.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.server.replicas | default 1 }}
   selector:
     matchLabels:
       component: server
