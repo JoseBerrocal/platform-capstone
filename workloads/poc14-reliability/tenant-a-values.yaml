@@ -26,3 +26,11 @@ resources:
     limits:
       cpu: 500m
       memory: 512Mi
+
+quota:
+  requestsCpu: "2"
+  requestsMemory: 2Gi
+  limitsCpu: "4"
+  limitsMemory: 4Gi
+  pods: "10"
+  persistentVolumeClaims: "2"
