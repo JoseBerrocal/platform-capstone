@@ -1,0 +1,2 @@
+NAME                        ENDPOINTS                                            AGE
+server-cluster-ip-service   10.244.0.41:5000,10.244.0.42:5000,10.244.0.44:5000   113m
