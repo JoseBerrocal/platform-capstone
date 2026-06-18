@@ -11,8 +11,14 @@ server:
   replicas: 3
 
 postgres:
+  enabled: true
   image: postgres:16
+  host: postgres-cluster-ip-service
+  port: "5432"
+  database: postgres
+  user: postgres
   passwordSecretName: pgpassword
+  passwordSecretKey: PGPASSWORD
   storageClassName: standard
   storageSize: 1Gi
 

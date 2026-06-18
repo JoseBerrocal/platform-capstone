@@ -11,10 +11,13 @@ server:
   replicas: 3
 
 postgres:
-  image: postgres:16
-  passwordSecretName: pgpassword
-  storageClassName: standard
-  storageSize: 1Gi
+  enabled: false
+  host: postgres-ha-rw.postgres-ha.svc.cluster.local
+  port: "5432"
+  database: app
+  user: app
+  passwordSecretName: postgres-ha-app-secret
+  passwordSecretKey: password
 
 resources:
   client: {}
