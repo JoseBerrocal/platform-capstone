@@ -23,15 +23,15 @@ spec:
             allowPrivilegeEscalation: false
           env:
             - name: PGUSER
-              value: postgres
+              value: {{ .Values.postgres.user | default "postgres" | quote }}
             - name: PGHOST
-              value: postgres-cluster-ip-service
+              value: {{ .Values.postgres.host | default "postgres-cluster-ip-service" | quote }}
             - name: PGPORT
-              value: "5432"
+              value: {{ .Values.postgres.port | default "5432" | quote }}
             - name: PGDATABASE
-              value: postgres
+              value: {{ .Values.postgres.database | default "postgres" | quote }}
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.postgres.passwordSecretName }}
-                  key: PGPASSWORD
+                  name: {{ .Values.postgres.passwordSecretName | quote }}
+                  key: {{ .Values.postgres.passwordSecretKey | default "PGPASSWORD" | quote }}
