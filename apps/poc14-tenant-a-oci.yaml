@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: ghcr.io/joseberrocal/charts
       chart: tenant-platform
-      targetRevision: 0.1.4
+      targetRevision: 0.1.5
       helm:
         valueFiles:
           - $values/workloads/poc14-reliability/tenant-a-values.yaml
