@@ -4,16 +4,39 @@ metadata:
   name: postgres-ha
   annotations:
     argocd.argoproj.io/sync-wave: "2"
+
 ---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-ha-app
+  namespace: postgres-ha
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+type: kubernetes.io/basic-auth
+stringData:
+  username: app
+  password: postgres123
+
+---
+
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgres-ha
   namespace: postgres-ha
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "4"
 spec:
   instances: 3
+
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: postgres-ha-app
 
   storage:
     size: 1Gi
