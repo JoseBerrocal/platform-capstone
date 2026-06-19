@@ -1,42 +1,25 @@
-apiVersion: v1
-kind: Namespace
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: postgres-ha
+  namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
-
----
-
-apiVersion: v1
-kind: Secret
-metadata:
-  name: postgres-ha-app
-  namespace: postgres-ha
-  annotations:
-    argocd.argoproj.io/sync-wave: "3"
-type: kubernetes.io/basic-auth
-stringData:
-  username: app
-  password: postgres123
-
----
-
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
-metadata:
-  name: postgres-ha
-  namespace: postgres-ha
-  annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
-  instances: 3
+  project: default
 
-  bootstrap:
-    initdb:
-      database: app
-      owner: app
-      secret:
-        name: postgres-ha-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgres-ha
 
-  storage:
-    size: 1Gi
+  source:
+    repoURL: https://github.com/JoseBerrocal/platform-capstone.git
+    targetRevision: main
+    path: platform/postgres-ha
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
