@@ -1,0 +1,4 @@
+NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+postgres-ha-1   Bound    pvc-4fffd1c1-b66f-4777-ad47-e1f0d05ae641   1Gi        RWO            gp3            <unset>                 6h25m
+postgres-ha-2   Bound    pvc-34296758-9d0f-4ae4-b803-8aa7bae0eb80   1Gi        RWO            gp3            <unset>                 6h24m
+postgres-ha-3   Bound    pvc-27bbdf4b-6271-4164-8d89-caa8701b0b2e   1Gi        RWO            gp3            <unset>                 4h36m

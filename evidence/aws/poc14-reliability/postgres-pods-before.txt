@@ -1,0 +1,4 @@
+NAME            READY   STATUS    RESTARTS   AGE    IP           NODE                                       NOMINATED NODE   READINESS GATES
+postgres-ha-1   1/1     Running   0          123m   10.0.2.87    ip-10-0-2-252.eu-west-1.compute.internal   <none>           <none>
+postgres-ha-2   1/1     Running   0          16m    10.0.1.234   ip-10-0-1-118.eu-west-1.compute.internal   <none>           <none>
+postgres-ha-3   1/1     Running   0          15m    10.0.1.58    ip-10-0-1-118.eu-west-1.compute.internal   <none>           <none>

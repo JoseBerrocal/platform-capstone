@@ -1,0 +1,101 @@
+Name:             postgres-ha-1
+Namespace:        postgres-ha
+Priority:         0
+Service Account:  postgres-ha
+Node:             <none>
+Labels:           app.kubernetes.io/component=database
+                  app.kubernetes.io/instance=postgres-ha
+                  app.kubernetes.io/managed-by=cloudnative-pg
+                  app.kubernetes.io/name=postgresql
+                  app.kubernetes.io/version=18
+                  cnpg.io/cluster=postgres-ha
+                  cnpg.io/instanceName=postgres-ha-1
+                  cnpg.io/podRole=instance
+Annotations:      cnpg.io/nodeSerial: 1
+                  cnpg.io/operatorVersion: 1.28.0
+                  cnpg.io/podEnvHash: 7764fc998c
+                  cnpg.io/podSpec:
+                    {"volumes":[{"name":"pgdata","persistentVolumeClaim":{"claimName":"postgres-ha-1"}},{"name":"scratch-data","emptyDir":{}},{"name":"shm","e...
+Status:           Pending
+SeccompProfile:   RuntimeDefault
+IP:               
+IPs:              <none>
+Controlled By:    Cluster/postgres-ha
+Init Containers:
+  bootstrap-controller:
+    Image:           ghcr.io/cloudnative-pg/cloudnative-pg:1.28.0
+    Port:            <none>
+    Host Port:       <none>
+    SeccompProfile:  RuntimeDefault
+    Command:
+      /manager
+      bootstrap
+      /controller/manager
+      --log-level=info
+    Environment:  <none>
+    Mounts:
+      /controller from scratch-data (rw)
+      /dev/shm from shm (rw)
+      /run from scratch-data (rw)
+      /var/lib/postgresql/data from pgdata (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mt9xx (ro)
+Containers:
+  postgres:
+    Image:           ghcr.io/cloudnative-pg/postgresql:18.1-system-trixie
+    Ports:           5432/TCP (postgresql), 9187/TCP (metrics), 8000/TCP (status)
+    Host Ports:      0/TCP (postgresql), 0/TCP (metrics), 0/TCP (status)
+    SeccompProfile:  RuntimeDefault
+    Command:
+      /controller/manager
+      instance
+      run
+      --status-port-tls
+      --log-level=info
+    Liveness:   http-get https://:8000/healthz delay=0s timeout=5s period=10s #success=1 #failure=3
+    Readiness:  http-get https://:8000/readyz delay=0s timeout=5s period=10s #success=1 #failure=3
+    Startup:    http-get https://:8000/startupz delay=0s timeout=5s period=10s #success=1 #failure=360
+    Environment:
+      PGDATA:        /var/lib/postgresql/data/pgdata
+      POD_NAME:      postgres-ha-1
+      NAMESPACE:     postgres-ha
+      CLUSTER_NAME:  postgres-ha
+      PSQL_HISTORY:  /controller/tmp/.psql_history
+      PGPORT:        5432
+      PGHOST:        /controller/run
+      TMPDIR:        /controller/tmp
+    Mounts:
+      /controller from scratch-data (rw)
+      /dev/shm from shm (rw)
+      /run from scratch-data (rw)
+      /var/lib/postgresql/data from pgdata (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mt9xx (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+Volumes:
+  pgdata:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  postgres-ha-1
+    ReadOnly:   false
+  scratch-data:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  shm:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  <unset>
+  kube-api-access-mt9xx:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason            Age                 From               Message
+  ----     ------            ----                ----               -------
+  Warning  FailedScheduling  110s (x8 over 28m)  default-scheduler  0/3 nodes are available: 1 node(s) didn't match PersistentVolume's node affinity, 2 Too many pods. preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
