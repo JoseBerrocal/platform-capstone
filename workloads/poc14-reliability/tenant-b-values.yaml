@@ -12,13 +12,17 @@ server:
 
 postgres:
   enabled: true
+  createSecret: true
+
   image: postgres:16
   host: postgres-cluster-ip-service
   port: "5432"
   database: postgres
   user: postgres
+
   passwordSecretName: pgpassword
   passwordSecretKey: PGPASSWORD
+
   storageClassName: standard
   storageSize: 1Gi
 
