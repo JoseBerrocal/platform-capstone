@@ -13,6 +13,7 @@ server:
 postgres:
   enabled: true
   createSecret: true
+  externalCnpg: false
 
   image: postgres:16
   host: postgres-cluster-ip-service

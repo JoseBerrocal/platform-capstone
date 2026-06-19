@@ -1,0 +1,21 @@
+{{- if .Values.postgres.externalCnpg }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-server-egress-to-cnpg
+  namespace: {{ .Values.tenant.name }}
+spec:
+  podSelector:
+    matchLabels:
+      component: server
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: postgres-ha
+      ports:
+        - protocol: TCP
+          port: 5432
+{{- end }}

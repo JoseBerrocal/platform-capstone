@@ -13,6 +13,7 @@ server:
 postgres:
   enabled: false
   createSecret: true
+  externalCnpg: true
 
   host: postgres-ha-rw.postgres-ha.svc.cluster.local
   port: "5432"
