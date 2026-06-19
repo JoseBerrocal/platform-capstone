@@ -25,7 +25,7 @@ postgres:
   passwordSecretKey: PGPASSWORD
   password: postgres123
 
-  storageClassName: standard
+  storageClassName: gp3
   storageSize: 1Gi
 
 resources:
