@@ -12,12 +12,15 @@ server:
 
 postgres:
   enabled: false
+  createSecret: true
+
   host: postgres-ha-rw.postgres-ha.svc.cluster.local
   port: "5432"
-  database: app
-  user: app
+  database: postgres
+  user: postgres
+
   passwordSecretName: postgres-ha-app-secret
-  passwordSecretKey: password
+  passwordSecretKey: PGPASSWORD
 
 resources:
   client: {}
