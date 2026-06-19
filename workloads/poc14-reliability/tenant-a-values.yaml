@@ -17,11 +17,12 @@ postgres:
 
   host: postgres-ha-rw.postgres-ha.svc.cluster.local
   port: "5432"
-  database: postgres
-  user: postgres
+  database: app
+  user: app
 
   passwordSecretName: postgres-ha-app-secret
   passwordSecretKey: PGPASSWORD
+  password: postgres123
 
 resources:
   client: {}
