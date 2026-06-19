@@ -3,5 +3,7 @@ kind: Cluster
 metadata:
   name: postgres-ha
   namespace: postgres-ha
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   instances: 3
