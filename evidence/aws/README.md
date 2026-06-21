@@ -12,3 +12,8 @@ Validated components:
 - Prometheus ingress
 - Metrics Server
 - Pod and node metrics
+- CloudNativePG PostgreSQL HA
+- Reliability and observability validation
+- Prometheus alerting
+- Deployment degradation detection
+- Incident recovery validation
