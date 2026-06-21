@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: joseberrocal/poc09-server:5b60415
+          image: joseberrocal/poc09-server:48176c3
           ports:
             - containerPort: 5000
           securityContext:
