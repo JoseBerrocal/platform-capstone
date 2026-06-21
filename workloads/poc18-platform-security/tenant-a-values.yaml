@@ -1,0 +1,44 @@
+tenant:
+  name: poc18-security-tenant-a
+  host: tenant-a.platform-demo.local
+
+client:
+  image: joseberrocal/poc09-client:ef84342
+  replicas: 2
+
+server:
+  image: joseberrocal/poc09-server:ef84342
+  replicas: 3
+
+postgres:
+  enabled: false
+  createSecret: true
+  externalCnpg: true
+
+  host: postgres-ha-rw.postgres-ha.svc.cluster.local
+  port: "5432"
+  database: app
+  user: app
+
+  passwordSecretName: postgres-ha-app-secret
+  passwordSecretKey: PGPASSWORD
+  password: postgres123
+
+resources:
+  client: {}
+  server: {}
+  postgres:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+quota:
+  requestsCpu: "2"
+  requestsMemory: 2Gi
+  limitsCpu: "4"
+  limitsMemory: 4Gi
+  pods: "10"
+  persistentVolumeClaims: "2"

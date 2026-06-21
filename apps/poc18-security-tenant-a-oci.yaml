@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: poc18-security-tenant-a-oci
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  project: default
+  sources:
+    - repoURL: ghcr.io/joseberrocal/charts
+      chart: tenant-platform
+      targetRevision: 0.1.8
+      helm:
+        valueFiles:
+          - $values/workloads/poc18-platform-security/tenant-a-values.yaml
+
+    - repoURL: https://github.com/JoseBerrocal/platform-capstone.git
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: poc18-security-tenant-a
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
