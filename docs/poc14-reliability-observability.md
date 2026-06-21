@@ -81,11 +81,12 @@ Validated:
 
 Not validated:
 
-- PostgreSQL primary failover
-- Leader election validation
-- Data persistence after failover
+- PodRestartingFrequently alert
+- PostgreSQLClusterDegraded alert
 
-These items are covered in Stage 4.
+These alerts were defined but not intentionally triggered during this stage.
+
+PostgreSQL primary failover, leader election, and data persistence validation were successfully completed during Stage 2.
 
 ---
 
