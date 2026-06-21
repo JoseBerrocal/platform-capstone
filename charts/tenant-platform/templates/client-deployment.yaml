@@ -21,3 +21,4 @@ spec:
           securityContext:
             runAsNonRoot: false
             allowPrivilegeEscalation: false
+      serviceAccountName: {{ .Values.serviceAccounts.client.name }}

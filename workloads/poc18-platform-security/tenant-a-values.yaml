@@ -42,3 +42,11 @@ quota:
   limitsMemory: 4Gi
   pods: "10"
   persistentVolumeClaims: "2"
+
+serviceAccounts:
+  client:
+    name: client-sa
+  server:
+    name: server-sa
+  # postgres:
+  #   name: default

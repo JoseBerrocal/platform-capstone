@@ -35,3 +35,4 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.postgres.passwordSecretName | quote }}
                   key: {{ .Values.postgres.passwordSecretKey | default "PGPASSWORD" | quote }}
+      serviceAccountName: {{ .Values.serviceAccounts.server.name }}
