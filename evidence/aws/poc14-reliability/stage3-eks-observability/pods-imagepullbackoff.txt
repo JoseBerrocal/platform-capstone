@@ -1,0 +1,8 @@
+NAME                                 READY   STATUS             RESTARTS   AGE
+client-deployment-6cfbbfc8c8-kc5pd   1/1     Running            0          37h
+client-deployment-6cfbbfc8c8-shr8j   1/1     Running            0          37h
+server-deployment-774975898d-hb75n   1/1     Running            0          80m
+server-deployment-774975898d-jkmcz   1/1     Running            0          80m
+server-deployment-774975898d-n525t   1/1     Running            0          80m
+server-deployment-7d6b967cd5-62hvc   0/1     ImagePullBackOff   0          13m
+server-deployment-7d6b967cd5-hclwf   0/1     ImagePullBackOff   0          10m

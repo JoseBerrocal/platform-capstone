@@ -1,0 +1,3 @@
+NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+client-deployment   2/2     2            2           37h
+server-deployment   3/3     3            3           37h

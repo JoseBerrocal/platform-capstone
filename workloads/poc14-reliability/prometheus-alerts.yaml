@@ -1,1 +1,35 @@
-# To be implemented during Stage 3.
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: poc14-reliability-rules
+  namespace: observability
+  labels:
+    release: observability
+
+spec:
+  groups:
+
+  - name: poc14.rules
+
+    rules:
+
+    - alert: DeploymentReplicasMismatch
+      expr: kube_deployment_status_replicas_available < kube_deployment_spec_replicas
+      for: 2m
+
+      annotations:
+        summary: Deployment missing replicas
+
+    - alert: PodRestartingFrequently
+      expr: increase(kube_pod_container_status_restarts_total[10m]) > 3
+      for: 5m
+
+      annotations:
+        summary: Pod restarting frequently
+
+    - alert: PostgreSQLClusterDegraded
+      expr: cnpg_collector_up < 1
+      for: 2m
+
+      annotations:
+        summary: PostgreSQL cluster degraded

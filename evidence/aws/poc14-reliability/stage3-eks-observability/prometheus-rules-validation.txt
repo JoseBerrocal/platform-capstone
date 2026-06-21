@@ -1,0 +1,31 @@
+Name:         poc14-reliability-rules
+Namespace:    observability
+Labels:       <none>
+Annotations:  prometheus-operator-validated: true
+API Version:  monitoring.coreos.com/v1
+Kind:         PrometheusRule
+Metadata:
+  Creation Timestamp:  2026-06-21T00:46:35Z
+  Generation:          1
+  Resource Version:    593199
+  UID:                 16b52112-1010-4a71-ab89-a61a0e788342
+Spec:
+  Groups:
+    Name:  poc14.rules
+    Rules:
+      Alert:  DeploymentReplicasMismatch
+      Annotations:
+        Summary:  Deployment missing replicas
+      Expr:       kube_deployment_status_replicas_available < kube_deployment_spec_replicas
+      For:        2m
+      Alert:      PodRestartingFrequently
+      Annotations:
+        Summary:  Pod restarting frequently
+      Expr:       increase(kube_pod_container_status_restarts_total[10m]) > 3
+      For:        5m
+      Alert:      PostgreSQLClusterDegraded
+      Annotations:
+        Summary:  PostgreSQL cluster degraded
+      Expr:       cnpg_collector_up < 1
+      For:        2m
+Events:           <none>
