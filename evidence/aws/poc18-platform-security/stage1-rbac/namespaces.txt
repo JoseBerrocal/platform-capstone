@@ -1,0 +1,12 @@
+NAME                      STATUS   AGE
+argocd                    Active   2d4h
+cnpg-system               Active   2d3h
+default                   Active   2d4h
+ingress-nginx             Active   2d3h
+kube-node-lease           Active   2d4h
+kube-public               Active   2d4h
+kube-system               Active   2d4h
+observability             Active   2d3h
+poc18-security-tenant-a   Active   88m
+poc18-security-tenant-b   Active   88m
+postgres-ha               Active   2d3h

@@ -1,0 +1,26 @@
+Developer A create deployment in tenant-a:
+yes
+
+Developer A create deployment in tenant-b:
+no
+
+Developer B create deployment in tenant-b:
+yes
+
+Developer B create deployment in tenant-a:
+no
+
+Readonly A get pods in tenant-a:
+yes
+
+Readonly A create deployment in tenant-a:
+no
+
+Readonly B get pods in tenant-b:
+yes
+
+Readonly B create deployment in tenant-b:
+no
+
+Developer A delete namespace:
+no

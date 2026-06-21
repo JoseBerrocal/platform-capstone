@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+
+metadata:
+  name: developer-binding-tenant-b
+  namespace: poc18-security-tenant-b
+
+subjects:
+- kind: User
+  name: developer-user-b
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: developer-tenant-b
