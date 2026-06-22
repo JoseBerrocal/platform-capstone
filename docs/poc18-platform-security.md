@@ -156,8 +156,31 @@ Evidence:
 
 ```text
 evidence/aws/poc18-platform-security/stage3-network-security/
+```
 
 ---
+
+## Stage 4 — Secrets Management
+
+Implemented:
+
+* Database credentials stored as Kubernetes Secrets.
+* Tenant A uses `postgres-ha-app-secret` for external CloudNativePG credentials.
+* Tenant B uses `pgpassword` for internal PostgreSQL credentials.
+* Secret configuration is managed through the tenant Helm values and deployed by ArgoCD.
+
+Validated:
+
+* Tenant A server consumes database credentials from Kubernetes Secrets.
+* Tenant B server consumes database credentials from Kubernetes Secrets.
+* Invalid Tenant A database credentials cause application/database connection failure.
+* Restoring the correct secret value recovers the workload after restart.
+
+Evidence:
+
+```text
+evidence/aws/poc18-platform-security/stage4-secrets-management/
+```
 
 ## Security Concepts Demonstrated
 
@@ -176,6 +199,10 @@ evidence/aws/poc18-platform-security/stage3-network-security/
 * East-West Traffic Control
 * Database Isolation
 * Runtime Workload Segmentation
+* Kubernetes Secrets
+* Secret Consumption
+* Credential Failure Recovery
+* GitOps-Managed Secret Configuration
 
 ---
 
