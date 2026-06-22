@@ -1,0 +1,9 @@
+NAME                                                     CREATED AT
+role.rbac.authorization.k8s.io/developer-tenant-a        2026-06-21T18:25:25Z
+role.rbac.authorization.k8s.io/readonly-tenant-a         2026-06-21T18:12:58Z
+role.rbac.authorization.k8s.io/server-configmap-reader   2026-06-21T19:16:58Z
+
+NAME                                                                    ROLE                           AGE
+rolebinding.rbac.authorization.k8s.io/developer-binding-tenant-a        Role/developer-tenant-a        4h43m
+rolebinding.rbac.authorization.k8s.io/readonly-binding-tenant-a         Role/readonly-tenant-a         4h42m
+rolebinding.rbac.authorization.k8s.io/server-configmap-reader-binding   Role/server-configmap-reader   3h39m

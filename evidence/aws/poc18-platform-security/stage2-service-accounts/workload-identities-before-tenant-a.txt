@@ -1,0 +1,5 @@
+client-deployment-6cfbbfc8c8-7cmj7 default
+client-deployment-6cfbbfc8c8-vhrqw default
+server-deployment-774975898d-4922l default
+server-deployment-774975898d-5mtwh default
+server-deployment-774975898d-dk5c2 default

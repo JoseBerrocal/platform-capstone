@@ -1,0 +1,6 @@
+client-deployment-69c959b5c6-pd8q2 client-sa
+client-deployment-69c959b5c6-xxhrn client-sa
+postgres-deployment-87776b57c-952c2 postgres-sa
+server-deployment-764b47d465-drwlh server-sa
+server-deployment-764b47d465-jxwgd server-sa
+server-deployment-764b47d465-vmtnj server-sa

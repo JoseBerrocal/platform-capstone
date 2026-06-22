@@ -1,0 +1,5 @@
+client-deployment-69c959b5c6-7qwc5 client-sa
+client-deployment-69c959b5c6-rns4q client-sa
+server-deployment-77cf95d978-g5z6w server-sa
+server-deployment-77cf95d978-lktdf server-sa
+server-deployment-77cf95d978-wjvfd server-sa

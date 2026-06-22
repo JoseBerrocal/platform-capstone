@@ -1,0 +1,20 @@
+Tenant A server-sa get configmaps:
+yes
+
+Tenant A server-sa create deployments:
+no
+
+Tenant A client-sa get configmaps:
+no
+
+Tenant B server-sa get configmaps:
+yes
+
+Tenant B server-sa create deployments:
+no
+
+Tenant B client-sa get configmaps:
+no
+
+Tenant B postgres-sa get configmaps:
+no

@@ -182,6 +182,29 @@ Endpoints
 Pod
 ```
 
+### POC18 — Platform Security & Developer Guardrails
+
+Focus:
+
+- RBAC
+- Service Accounts
+- Workload Identity
+- Least Privilege
+- Multi-Tenant Access Control
+- Platform Security Guardrails
+
+Completed stages:
+
+- Stage 1 — RBAC & Multi-Tenant Access Control
+- Stage 2 — Service Accounts & Workload Identity
+
+Current validation:
+
+- Developer users are restricted to assigned tenant namespaces.
+- ReadOnly users can inspect resources but cannot modify workloads.
+- Application workloads use dedicated ServiceAccounts instead of the default ServiceAccount.
+- Workload-level RBAC grants only required permissions.
+
 ---
 
 ## Repository Structure
@@ -275,3 +298,8 @@ docs/
 * Multi-Tenant Platforms
 * Observability
 * Platform Engineering
+* Kubernetes Security
+* RBAC
+* Service Accounts
+* Workload Identity
+* Least Privilege
