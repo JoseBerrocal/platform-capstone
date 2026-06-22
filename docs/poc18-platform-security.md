@@ -182,6 +182,32 @@ Evidence:
 evidence/aws/poc18-platform-security/stage4-secrets-management/
 ```
 
+---
+
+## Stage 5 — Secure Helm Platform Defaults
+
+Implemented:
+
+* runAsNonRoot=true
+* allowPrivilegeEscalation=false
+* readOnlyRootFilesystem=true
+* RuntimeDefault seccomp profile
+
+Validation:
+
+* Workloads run as non-root users.
+* Secure defaults are inherited from the tenant-platform Helm chart.
+* React client required a writable cache directory.
+* An emptyDir volume was added for /app/node_modules/.cache.
+* Applications remained functional after security hardening.
+
+Evidence:
+
+```text
+evidence/aws/poc18-platform-security/stage5-secure-defaults/
+```
+
+---
 ## Security Concepts Demonstrated
 
 * Kubernetes RBAC
@@ -203,6 +229,14 @@ evidence/aws/poc18-platform-security/stage4-secrets-management/
 * Secret Consumption
 * Credential Failure Recovery
 * GitOps-Managed Secret Configuration
+* Pod Security
+* Secure Container Defaults
+* Non-Root Containers
+* Runtime Security Hardening
+* Seccomp Profiles
+* Read-Only Root Filesystems
+* Platform Guardrails
+* Secure-by-Default Platforms
 
 ---
 
@@ -217,6 +251,11 @@ The platform now supports:
 * Least-privilege workload permissions
 * Network-level workload isolation
 * Database access controls
-* GitOps-managed security configuration
+* GitOps-managed secret configuration
+* Non-root workload execution
+* Runtime security hardening through secure Helm defaults
+* Secure-by-default onboarding for new platform tenants
 
-These controls reduce unnecessary permissions and improve tenant isolation and platform security.
+All security controls are managed through GitOps workflows and inherited automatically by onboarded workloads through the tenant-platform Helm chart.
+
+These controls reduce unnecessary permissions, improve tenant isolation, enforce security standards, and provide reusable platform guardrails for multi-tenant Kubernetes environments.

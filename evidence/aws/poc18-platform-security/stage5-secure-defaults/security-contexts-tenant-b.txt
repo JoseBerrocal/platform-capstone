@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: poc18-security-tenant-b-oci:apps/Deployment:poc18-security-tenant-b/client-deployment
+    deployment.kubernetes.io/revision: "6"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"poc18-security-tenant-b-oci:apps/Deployment:poc18-security-tenant-b/client-deployment"},"name":"client-deployment","namespace":"poc18-security-tenant-b"},"spec":{"replicas":2,"selector":{"matchLabels":{"component":"web"}},"template":{"metadata":{"labels":{"component":"web"}},"spec":{"containers":[{"image":"joseberrocal/poc09-client:ef84342","name":"client","ports":[{"containerPort":3000}],"securityContext":{"allowPrivilegeEscalation":false,"readOnlyRootFilesystem":true,"runAsNonRoot":true,"runAsUser":1000,"seccompProfile":{"type":"RuntimeDefault"}},"volumeMounts":[{"mountPath":"/app/node_modules/.cache","name":"react-cache"}]}],"serviceAccountName":"client-sa","volumes":[{"emptyDir":{},"name":"react-cache"}]}}}}
+  creationTimestamp: "2026-06-21T16:08:10Z"
+  generation: 6
+  name: client-deployment
+  namespace: poc18-security-tenant-b
+  resourceVersion: "1098301"
+  uid: eb9d689d-03b1-4804-a2f7-5de6fe3ef70e
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      component: web
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/restartedAt: "2026-06-22T09:48:09+02:00"
+      creationTimestamp: null
+      labels:
+        component: web
+    spec:
+      containers:
+      - image: joseberrocal/poc09-client:ef84342
+        imagePullPolicy: IfNotPresent
+        name: client
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          seccompProfile:
+            type: RuntimeDefault
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /app/node_modules/.cache
+          name: react-cache
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: client-sa
+      serviceAccountName: client-sa
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: react-cache
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2026-06-21T16:08:33Z"
+    lastUpdateTime: "2026-06-21T16:08:33Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-06-21T16:08:10Z"
+    lastUpdateTime: "2026-06-22T07:48:12Z"
+    message: ReplicaSet "client-deployment-b887ddf88" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 6
+  readyReplicas: 2
+  replicas: 2
+  updatedReplicas: 2

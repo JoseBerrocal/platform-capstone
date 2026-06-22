@@ -1,0 +1,7 @@
+NAME                                   READY   STATUS    RESTARTS      AGE   IP           NODE                                       NOMINATED NODE   READINESS GATES
+client-deployment-b887ddf88-7nn5k      1/1     Running   0             12m   10.0.2.47    ip-10-0-2-63.eu-west-1.compute.internal    <none>           <none>
+client-deployment-b887ddf88-wgxnc      1/1     Running   0             12m   10.0.1.111   ip-10-0-1-244.eu-west-1.compute.internal   <none>           <none>
+postgres-deployment-769c4ff4bd-wr9ts   1/1     Running   1 (69m ago)   70m   10.0.2.107   ip-10-0-2-63.eu-west-1.compute.internal    <none>           <none>
+server-deployment-558fc48947-qfwpt     1/1     Running   0             70m   10.0.1.175   ip-10-0-1-118.eu-west-1.compute.internal   <none>           <none>
+server-deployment-558fc48947-r2qhz     1/1     Running   0             70m   10.0.1.12    ip-10-0-1-244.eu-west-1.compute.internal   <none>           <none>
+server-deployment-558fc48947-w9nbm     1/1     Running   0             70m   10.0.2.218   ip-10-0-2-63.eu-west-1.compute.internal    <none>           <none>
