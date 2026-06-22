@@ -19,6 +19,16 @@ spec:
           ports:
             - containerPort: 3000
           securityContext:
-            runAsNonRoot: false
+            runAsNonRoot: true
+            runAsUser: 1000
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - name: react-cache
+              mountPath: /app/node_modules/.cache
+      volumes:
+        - name: react-cache
+          emptyDir: {}
       serviceAccountName: {{ .Values.serviceAccounts.client.name }}
