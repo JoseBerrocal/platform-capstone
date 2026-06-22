@@ -22,8 +22,7 @@ postgres:
 
   passwordSecretName: postgres-ha-app-secret
   passwordSecretKey: PGPASSWORD
-  # password: postgres123
-  password: wrongpassword
+  password: postgres123
 
 resources:
   client: {}
