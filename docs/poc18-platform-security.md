@@ -119,6 +119,46 @@ evidence/aws/poc18-platform-security/stage2-service-accounts/
 ```
 ---
 
+## Stage 3 — Network Security & Tenant Isolation
+
+Implemented:
+
+* Default deny ingress and egress policies
+* DNS egress policy
+* Ingress Controller access policies
+* Client-to-server communication policies
+* Server-to-PostgreSQL communication policies
+* Server-to-CloudNativePG communication policies
+
+Validated:
+
+* Client can reach application server
+* Server can reach PostgreSQL
+* Server can reach external CloudNativePG
+* Default deny policies are deployed through the tenant platform chart
+* NetworkPolicies are managed through GitOps
+
+Additional Findings:
+
+* CNPG ingress isolation was tested by applying a deny-all ingress NetworkPolicy in the postgres-ha namespace.
+* Traffic to postgres-ha-rw remained reachable from tenant workloads.
+* Additional investigation is required to determine why ingress restrictions were not enforced for this traffic path in the current environment.
+
+Network Guardrails:
+
+* Zero-trust networking model
+* Least-privilege east-west traffic
+* Database isolation
+* Tenant network segmentation
+* GitOps-managed NetworkPolicies
+
+Evidence:
+
+```text
+evidence/aws/poc18-platform-security/stage3-network-security/
+
+---
+
 ## Security Concepts Demonstrated
 
 * Kubernetes RBAC
@@ -131,6 +171,11 @@ evidence/aws/poc18-platform-security/stage2-service-accounts/
 * Multi-Tenant Platform Security
 * GitOps-Managed Security Configuration
 * Platform Governance
+* Network Policies
+* Zero Trust Networking
+* East-West Traffic Control
+* Database Isolation
+* Runtime Workload Segmentation
 
 ---
 
@@ -143,6 +188,8 @@ The platform now supports:
 * Namespace-level access control for users
 * Dedicated workload identities for application components
 * Least-privilege workload permissions
+* Network-level workload isolation
+* Database access controls
 * GitOps-managed security configuration
 
 These controls reduce unnecessary permissions and improve tenant isolation and platform security.

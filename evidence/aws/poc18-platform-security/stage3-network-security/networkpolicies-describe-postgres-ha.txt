@@ -1,0 +1,14 @@
+Name:         allow-server-to-external-cnpg
+Namespace:    postgres-ha
+Created on:   2026-06-22 04:33:50 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id: poc18-security-tenant-a-oci:networking.k8s.io/NetworkPolicy:postgres-ha/allow-server-to-external-cnpg
+Spec:
+  PodSelector:     cnpg.io/cluster=postgres-ha
+  Allowing ingress traffic:
+    To Port: 5432/TCP
+    From:
+      NamespaceSelector: kubernetes.io/metadata.name=poc18-security-tenant-a
+      PodSelector: component=server
+  Not affecting egress traffic
+  Policy Types: Ingress

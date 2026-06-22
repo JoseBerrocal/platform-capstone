@@ -1,0 +1,8 @@
+NAME                                   POD-SELECTOR       AGE
+allow-client-egress-to-server          component=web      9h
+allow-client-to-server                 component=server   9h
+allow-dns                              <none>             9h
+allow-ingress-to-client                component=web      9h
+allow-ingress-to-server                component=server   9h
+allow-server-egress-to-cnpg            component=server   9h
+poc18-security-tenant-a-default-deny   <none>             9h

@@ -1,0 +1,9 @@
+CNPG ingress NetworkPolicy validation finding:
+
+A deny-all ingress NetworkPolicy was applied in the postgres-ha namespace to verify whether ingress restrictions were enforced for CloudNativePG traffic.
+
+Result:
+Client and server pods from poc18-security-tenant-a were still able to connect to postgres-ha-rw.postgres-ha.svc.cluster.local:5432.
+
+Conclusion:
+Ingress NetworkPolicy enforcement for the postgres-ha namespace/path was not active in this environment. Therefore, POC18 Stage 3 validates tenant-level NetworkPolicies and server egress to CNPG, but does not claim enforced CNPG ingress isolation.

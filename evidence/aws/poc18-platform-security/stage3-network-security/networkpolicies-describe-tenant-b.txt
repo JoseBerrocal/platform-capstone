@@ -1,0 +1,121 @@
+Name:         allow-client-egress-to-server
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id:
+                poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/allow-client-egress-to-server
+Spec:
+  PodSelector:     component=web
+  Not affecting ingress traffic
+  Allowing egress traffic:
+    To Port: 5000/TCP
+    To:
+      PodSelector: component=server
+  Policy Types: Egress
+
+
+Name:         allow-client-to-server
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id: poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/allow-client-to-server
+Spec:
+  PodSelector:     component=server
+  Allowing ingress traffic:
+    To Port: 5000/TCP
+    From:
+      PodSelector: component=web
+  Not affecting egress traffic
+  Policy Types: Ingress
+
+
+Name:         allow-dns
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id: poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/allow-dns
+Spec:
+  PodSelector:     <none> (Allowing the specific traffic to all pods in this namespace)
+  Not affecting ingress traffic
+  Allowing egress traffic:
+    To Port: 53/UDP
+    To Port: 53/TCP
+    To:
+      NamespaceSelector: kubernetes.io/metadata.name=kube-system
+  Policy Types: Egress
+
+
+Name:         allow-ingress-to-client
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id: poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/allow-ingress-to-client
+Spec:
+  PodSelector:     component=web
+  Allowing ingress traffic:
+    To Port: 3000/TCP
+    From:
+      NamespaceSelector: kubernetes.io/metadata.name=ingress-nginx
+  Not affecting egress traffic
+  Policy Types: Ingress
+
+
+Name:         allow-ingress-to-server
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id: poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/allow-ingress-to-server
+Spec:
+  PodSelector:     component=server
+  Allowing ingress traffic:
+    To Port: 5000/TCP
+    From:
+      NamespaceSelector: kubernetes.io/metadata.name=ingress-nginx
+  Not affecting egress traffic
+  Policy Types: Ingress
+
+
+Name:         allow-server-egress-to-postgres
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id:
+                poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/allow-server-egress-to-postgres
+Spec:
+  PodSelector:     component=server
+  Not affecting ingress traffic
+  Allowing egress traffic:
+    To Port: 5432/TCP
+    To:
+      PodSelector: component=postgres
+  Policy Types: Egress
+
+
+Name:         allow-server-to-postgres
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id: poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/allow-server-to-postgres
+Spec:
+  PodSelector:     component=postgres
+  Allowing ingress traffic:
+    To Port: 5432/TCP
+    From:
+      PodSelector: component=server
+  Not affecting egress traffic
+  Policy Types: Ingress
+
+
+Name:         poc18-security-tenant-b-default-deny
+Namespace:    poc18-security-tenant-b
+Created on:   2026-06-21 18:08:08 +0200 CEST
+Labels:       <none>
+Annotations:  argocd.argoproj.io/tracking-id:
+                poc18-security-tenant-b-oci:networking.k8s.io/NetworkPolicy:poc18-security-tenant-b/poc18-security-tenant-b-default-deny
+Spec:
+  PodSelector:     <none> (Allowing the specific traffic to all pods in this namespace)
+  Allowing ingress traffic:
+    <none> (Selected pods are isolated for ingress connectivity)
+  Allowing egress traffic:
+    <none> (Selected pods are isolated for egress connectivity)
+  Policy Types: Ingress, Egress

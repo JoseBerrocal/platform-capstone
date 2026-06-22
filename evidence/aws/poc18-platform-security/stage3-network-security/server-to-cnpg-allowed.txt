@@ -1,0 +1,1 @@
+postgres-ha-rw.postgres-ha.svc.cluster.local (172.20.23.81:5432) open

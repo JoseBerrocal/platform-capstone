@@ -1,0 +1,2 @@
+NAME                            POD-SELECTOR                  AGE
+allow-server-to-external-cnpg   cnpg.io/cluster=postgres-ha   108s
