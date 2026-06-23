@@ -208,6 +208,38 @@ evidence/aws/poc18-platform-security/stage5-secure-defaults/
 ```
 
 ---
+
+## Stage 6 — GitOps Security Controls
+
+Implemented:
+
+* Pod Security Admission restricted profile.
+* Namespace-level security enforcement.
+* Pod Security labels defined through ArgoCD managedNamespaceMetadata.
+* Existing tenant namespaces were reconciled through declarative Namespace manifests managed as code and applied with kubectl apply -f.
+* Security validation manifests for insecure workload testing.
+
+Validated:
+
+* Privileged Pod creation is rejected by Pod Security Admission.
+* Insecure Deployment manifests generate restricted policy warnings.
+* Tenant namespaces enforce restricted Pod Security labels.
+* Existing tenant workloads remain compliant and operational.
+
+Security Tests:
+
+* `privileged-deployment.yaml`
+* `root-user-deployment.yaml`
+* `missing-securitycontext.yaml`
+
+Evidence:
+
+```text
+evidence/aws/poc18-platform-security/stage6-gitops-security/
+```
+
+---
+
 ## Security Concepts Demonstrated
 
 * Kubernetes RBAC
@@ -237,6 +269,11 @@ evidence/aws/poc18-platform-security/stage5-secure-defaults/
 * Read-Only Root Filesystems
 * Platform Guardrails
 * Secure-by-Default Platforms
+* Pod Security Admission
+* Policy Enforcement
+* GitOps Security Controls
+* Secure Deployment Validation
+* Admission-Time Guardrails
 
 ---
 
@@ -255,6 +292,11 @@ The platform now supports:
 * Non-root workload execution
 * Runtime security hardening through secure Helm defaults
 * Secure-by-default onboarding for new platform tenants
+* Namespace-level Pod Security enforcement
+* Admission-time rejection of insecure workloads
+* GitOps-managed security test validation
+* GitOps-managed Pod Security Admission enforcement
+* Automatic security policy inheritance for new tenant namespaces
 
 All security controls are managed through GitOps workflows and inherited automatically by onboarded workloads through the tenant-platform Helm chart.
 

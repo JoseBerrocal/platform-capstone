@@ -1,0 +1,7 @@
+NAME                                   READY   STATUS    RESTARTS      AGE
+client-deployment-b887ddf88-7nn5k      1/1     Running   0             18h
+client-deployment-b887ddf88-wgxnc      1/1     Running   0             18h
+postgres-deployment-769c4ff4bd-wr9ts   1/1     Running   1 (18h ago)   19h
+server-deployment-558fc48947-qfwpt     1/1     Running   0             19h
+server-deployment-558fc48947-r2qhz     1/1     Running   0             19h
+server-deployment-558fc48947-w9nbm     1/1     Running   0             19h

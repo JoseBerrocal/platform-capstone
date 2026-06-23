@@ -1,0 +1,6 @@
+NAME                                 READY   STATUS    RESTARTS   AGE
+client-deployment-55f8d998bc-dptjm   1/1     Running   0          18h
+client-deployment-55f8d998bc-x87d5   1/1     Running   0          18h
+server-deployment-5655fcd849-7hr99   1/1     Running   0          19h
+server-deployment-5655fcd849-mvcrp   1/1     Running   0          19h
+server-deployment-5655fcd849-sbdwf   1/1     Running   0          19h

@@ -1,0 +1,2 @@
+NAME                      STATUS   AGE   LABELS
+poc18-security-tenant-a   Active   36h   kubernetes.io/metadata.name=poc18-security-tenant-a,pod-security.kubernetes.io/audit=restricted,pod-security.kubernetes.io/enforce=restricted,pod-security.kubernetes.io/warn=restricted

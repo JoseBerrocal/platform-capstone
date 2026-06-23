@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: root-user-test
+  namespace: poc18-security-tenant-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: root-user-test
+  template:
+    metadata:
+      labels:
+        app: root-user-test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          securityContext:
+            runAsUser: 0

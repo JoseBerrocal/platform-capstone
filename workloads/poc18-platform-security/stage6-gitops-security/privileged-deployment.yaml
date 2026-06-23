@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: privileged-test
+  namespace: poc18-security-tenant-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: privileged-test
+  template:
+    metadata:
+      labels:
+        app: privileged-test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          securityContext:
+            privileged: true

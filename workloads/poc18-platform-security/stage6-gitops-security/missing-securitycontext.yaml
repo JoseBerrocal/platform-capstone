@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: missing-securitycontext
+  namespace: poc18-security-tenant-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: missing-securitycontext
+  template:
+    metadata:
+      labels:
+        app: missing-securitycontext
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
