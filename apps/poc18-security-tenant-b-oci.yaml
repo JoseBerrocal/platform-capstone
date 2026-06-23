@@ -24,9 +24,9 @@ spec:
     namespace: poc18-security-tenant-b
 
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
 
