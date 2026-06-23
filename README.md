@@ -186,24 +186,55 @@ Pod
 
 Focus:
 
-- RBAC
-- Service Accounts
-- Workload Identity
-- Least Privilege
-- Multi-Tenant Access Control
-- Platform Security Guardrails
+* RBAC
+* Service Accounts
+* Workload Identity
+* Least Privilege
+* Network Policies
+* Secrets Management
+* Pod Security
+* GitOps Security Controls
+* Security Incident Response
 
 Completed stages:
 
-- Stage 1 — RBAC & Multi-Tenant Access Control
-- Stage 2 — Service Accounts & Workload Identity
+* Stage 1 — RBAC & Multi-Tenant Access Control
+* Stage 2 — Service Accounts & Workload Identity
+* Stage 3 — Network Segmentation
+* Stage 4 — Secrets Management
+* Stage 5 — Secure Helm Platform Defaults
+* Stage 6 — GitOps Security Controls
+* Stage 7 — Security Incident Response & RCA
 
-Current validation:
+Security controls implemented:
 
-- Developer users are restricted to assigned tenant namespaces.
-- ReadOnly users can inspect resources but cannot modify workloads.
-- Application workloads use dedicated ServiceAccounts instead of the default ServiceAccount.
-- Workload-level RBAC grants only required permissions.
+* Namespace isolation
+* Multi-tenant RBAC
+* Dedicated workload identities
+* Workload-level RBAC
+* Network segmentation
+* Secret-based credential management
+* Secure container defaults
+* Non-root execution
+* Read-only root filesystems
+* RuntimeDefault seccomp profiles
+* Pod Security Admission enforcement
+* GitOps-managed security configuration
+
+Operational validation:
+
+* Secret failure recovery
+* Network security validation
+* Pod Security Admission enforcement testing
+* Security incident troubleshooting
+* Root cause analysis documentation
+
+Documentation:
+
+```text
+docs/poc18-platform-security.md
+docs/poc18-phase7-security-incident-rca.md
+```
 
 ---
 
@@ -278,6 +309,9 @@ docs/
 ├── poc11-stateful-storage-recovery.md
 ├── poc12-gitops-drift-recovery.md
 ├── poc13-kubernetes-networking-incident.md
+├── poc14-reliability-observability.md
+├── poc18-phase7-security-incident-rca.md
+├── poc18-platform-security.md
 ├── platform-operations.md
 └── README.md
 ```
@@ -303,3 +337,11 @@ docs/
 * Service Accounts
 * Workload Identity
 * Least Privilege
+* Kubernetes Security
+* Network Policies
+* Pod Security Admission
+* Secrets Management
+* Security Incident Response
+* Root Cause Analysis
+* GitOps Security Controls
+* Multi-Tenant Platform Security

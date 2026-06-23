@@ -240,6 +240,49 @@ evidence/aws/poc18-platform-security/stage6-gitops-security/
 
 ---
 
+## Phase 7 — Security Incident & RCA
+
+**Goal:**
+
+Practice security troubleshooting and incident analysis.
+
+**Scope:**
+
+Simulate:
+
+* Missing Secret
+* Network Policy Isolation Failure
+* Pod Security Admission Violation
+
+Document:
+
+* Impact
+* Detection
+* Root Cause
+* Resolution
+* Prevention
+
+**Concepts:**
+
+* Incident Response
+* Troubleshooting
+* Root Cause Analysis
+* Security Operations
+
+**Artifact:**
+
+```text
+docs/poc18-security-incident-rca.md
+```
+
+**Evidence:**
+
+```text
+evidence/aws/poc18-platform-security/stage7-security-incidents/
+```
+
+---
+
 ## Security Concepts Demonstrated
 
 * Kubernetes RBAC
@@ -274,6 +317,11 @@ evidence/aws/poc18-platform-security/stage6-gitops-security/
 * GitOps Security Controls
 * Secure Deployment Validation
 * Admission-Time Guardrails
+* Incident Response
+* Security Troubleshooting
+* Root Cause Analysis
+* Security Incident Recovery
+* Operational Security Validation
 
 ---
 
@@ -297,7 +345,12 @@ The platform now supports:
 * GitOps-managed security test validation
 * GitOps-managed Pod Security Admission enforcement
 * Automatic security policy inheritance for new tenant namespaces
+* Security incident detection and investigation workflows
+* Root cause analysis procedures for security events
+* Recovery procedures for common platform security failures
 
 All security controls are managed through GitOps workflows and inherited automatically by onboarded workloads through the tenant-platform Helm chart.
 
-These controls reduce unnecessary permissions, improve tenant isolation, enforce security standards, and provide reusable platform guardrails for multi-tenant Kubernetes environments.
+The platform also includes documented security incident response procedures covering secret failures, network security validation, and Pod Security Admission violations.
+
+These controls reduce unnecessary permissions, improve tenant isolation, enforce security standards, provide reusable platform guardrails for multi-tenant Kubernetes environments, and improve operational readiness for security incidents.
