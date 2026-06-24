@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: poc19-capacity-tenant-b-oci
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  project: default
+  sources:
+    - repoURL: ghcr.io/joseberrocal/charts
+      chart: tenant-platform
+      targetRevision: 0.1.15
+      helm:
+        valueFiles:
+          - $values/workloads/poc19-capacity-planning/tenant-b-values.yaml
+
+    - repoURL: https://github.com/JoseBerrocal/platform-capstone.git
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: poc19-capacity-tenant-b
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+  managedNamespaceMetadata:
+    labels:
+      pod-security.kubernetes.io/enforce: restricted
+      pod-security.kubernetes.io/audit: restricted
+      pod-security.kubernetes.io/warn: restricted

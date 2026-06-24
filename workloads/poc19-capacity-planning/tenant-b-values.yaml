@@ -1,0 +1,68 @@
+tenant:
+  name: poc18-security-tenant-b
+  host: tenant-b.platform-demo.local
+
+client:
+  image: joseberrocal/poc09-client:ef84342
+  replicas: 2
+
+server:
+  image: joseberrocal/poc09-server:ef84342
+  replicas: 3
+
+postgres:
+  enabled: true
+  createSecret: true
+  externalCnpg: false
+
+  image: postgres:16
+  host: postgres-cluster-ip-service
+  port: "5432"
+  database: app
+  user: app
+
+  passwordSecretName: pgpassword
+  passwordSecretKey: PGPASSWORD
+  password: postgres123
+
+  storageClassName: gp3
+  storageSize: 1Gi
+
+resources:
+  client:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 256Mi
+  server:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  postgres:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+quota:
+  requestsCpu: "2"
+  requestsMemory: 2Gi
+  limitsCpu: "4"
+  limitsMemory: 4Gi
+  pods: "10"
+  persistentVolumeClaims: "2"
+
+serviceAccounts:
+  client:
+    name: client-sa
+  server:
+    name: server-sa
+  postgres:
+    name: postgres-sa
