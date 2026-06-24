@@ -1,5 +1,5 @@
 tenant:
-  name: poc18-security-tenant-a
+  name: poc19-capacity-tenant-a
   host: tenant-a.platform-demo.local
 
 client:
