@@ -45,11 +45,11 @@ spec:
                   key: {{ .Values.postgres.passwordSecretKey }}
           resources:
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: {{ .Values.resources.postgres.requests.cpu }}
+              memory: {{ .Values.resources.postgres.requests.memory }}
             limits:
-              cpu: 500m
-              memory: 512Mi
+              cpu: {{ .Values.resources.postgres.limits.cpu }}
+              memory: {{ .Values.resources.postgres.limits.memory }}
       serviceAccountName: {{ .Values.serviceAccounts.postgres.name }}
       volumes:
         - name: postgres-storage

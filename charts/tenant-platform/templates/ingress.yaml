@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-service
+  name: {{ .Values.tenant.name }}-ingress
   namespace: {{ .Values.tenant.name }}
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
