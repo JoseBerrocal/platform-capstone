@@ -5,10 +5,17 @@ tenant:
 client:
   image: joseberrocal/poc09-client:ef84342
   replicas: 2
+  autoscaling:
+    enabled: false
 
 server:
   image: joseberrocal/poc09-server:ef84342
   replicas: 3
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 6
+    targetCPUUtilizationPercentage: 70
 
 postgres:
   enabled: false
@@ -23,6 +30,9 @@ postgres:
   passwordSecretName: postgres-ha-app-secret
   passwordSecretKey: PGPASSWORD
   password: postgres123
+
+  autoscaling:
+    enabled: false
 
 resources:
   client:

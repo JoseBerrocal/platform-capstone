@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: ghcr.io/joseberrocal/charts
       chart: tenant-platform
-      targetRevision: 0.1.18
+      targetRevision: 0.1.19
       helm:
         valueFiles:
           - $values/workloads/poc19-capacity-planning/tenant-a-values.yaml
