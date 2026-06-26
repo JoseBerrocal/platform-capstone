@@ -1,0 +1,387 @@
+Name:               ip-10-0-1-118.eu-west-1.compute.internal
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=t3.medium
+                    beta.kubernetes.io/os=linux
+                    eks.amazonaws.com/capacityType=ON_DEMAND
+                    eks.amazonaws.com/nodegroup=default-2026061911455399480000000f
+                    eks.amazonaws.com/nodegroup-image=ami-0bf9ba40d76255f2c
+                    eks.amazonaws.com/sourceLaunchTemplateId=lt-0567601009f21d7ec
+                    eks.amazonaws.com/sourceLaunchTemplateVersion=1
+                    failure-domain.beta.kubernetes.io/region=eu-west-1
+                    failure-domain.beta.kubernetes.io/zone=eu-west-1a
+                    k8s.io/cloud-provider-aws=350a5df9b1668a55e0cddd180565c096
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=ip-10-0-1-118.eu-west-1.compute.internal
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=t3.medium
+                    topology.ebs.csi.aws.com/zone=eu-west-1a
+                    topology.k8s.aws/zone-id=euw1-az2
+                    topology.kubernetes.io/region=eu-west-1
+                    topology.kubernetes.io/zone=eu-west-1a
+Annotations:        alpha.kubernetes.io/provided-node-ip: 10.0.1.118
+                    csi.volume.kubernetes.io/nodeid: {"ebs.csi.aws.com":"i-0b9190872e7578ec0"}
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Fri, 19 Jun 2026 16:51:24 +0200
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  ip-10-0-1-118.eu-west-1.compute.internal
+  AcquireTime:     <unset>
+  RenewTime:       Fri, 26 Jun 2026 04:03:18 +0200
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Fri, 26 Jun 2026 03:59:29 +0200   Fri, 19 Jun 2026 16:51:22 +0200   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Fri, 26 Jun 2026 03:59:29 +0200   Fri, 19 Jun 2026 16:51:22 +0200   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Fri, 26 Jun 2026 03:59:29 +0200   Fri, 19 Jun 2026 16:51:22 +0200   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Fri, 26 Jun 2026 03:59:29 +0200   Fri, 19 Jun 2026 16:51:39 +0200   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:   10.0.1.118
+  InternalDNS:  ip-10-0-1-118.eu-west-1.compute.internal
+  Hostname:     ip-10-0-1-118.eu-west-1.compute.internal
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20893676Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3926440Ki
+  pods:               17
+Allocatable:
+  cpu:                1930m
+  ephemeral-storage:  18181869946
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3371432Ki
+  pods:               17
+System Info:
+  Machine ID:                 ec29b89ea89496d8e7e86ddebdc38bb4
+  System UUID:                ec29b89e-a894-96d8-e7e8-6ddebdc38bb4
+  Boot ID:                    4d77e54e-6b41-49c7-987e-20df7e73a7bc
+  Kernel Version:             6.12.90-120.164.amzn2023.x86_64
+  OS Image:                   Amazon Linux 2023.12.20260608
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.2.4+unknown
+  Kubelet Version:            v1.33.12-eks-0de9cde
+  Kube-Proxy Version:         
+ProviderID:                   aws:///eu-west-1a/i-0b9190872e7578ec0
+Non-terminated Pods:          (13 in total)
+  Namespace                   Name                                                      CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                      ------------  ----------  ---------------  -------------  ---
+  kube-system                 aws-node-qnvlv                                            50m (2%)      0 (0%)      0 (0%)           0 (0%)         6d11h
+  kube-system                 ebs-csi-node-njqdp                                        30m (1%)      0 (0%)      104Mi (3%)       320Mi (9%)     6d11h
+  kube-system                 eks-pod-identity-agent-btcqg                              0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d11h
+  kube-system                 kube-proxy-k5gmt                                          100m (5%)     0 (0%)      0 (0%)           0 (0%)         6d11h
+  observability               alertmanager-observability-kube-prometh-alertmanager-0    0 (0%)        0 (0%)      200Mi (6%)       0 (0%)         6d11h
+  observability               observability-grafana-5fcb444c67-spv7r                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d12h
+  observability               observability-kube-prometh-operator-9574799db-qjdps       0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d12h
+  observability               observability-kube-state-metrics-7fc97655c-c5wbm          0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d12h
+  observability               observability-prometheus-node-exporter-l29s9              0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d11h
+  observability               prometheus-observability-kube-prometh-prometheus-0        0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d11h
+  poc19-capacity-tenant-b     client-deployment-fcb9dfdfd-jqjpl                         100m (5%)     300m (15%)  256Mi (7%)       512Mi (15%)    31h
+  postgres-ha                 postgres-ha-2                                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d11h
+  postgres-ha                 postgres-ha-3                                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d11h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests     Limits
+  --------           --------     ------
+  cpu                280m (14%)   300m (15%)
+  memory             560Mi (17%)  832Mi (25%)
+  ephemeral-storage  0 (0%)       0 (0%)
+  hugepages-1Gi      0 (0%)       0 (0%)
+  hugepages-2Mi      0 (0%)       0 (0%)
+Events:              <none>
+
+
+Name:               ip-10-0-1-244.eu-west-1.compute.internal
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=t3.medium
+                    beta.kubernetes.io/os=linux
+                    eks.amazonaws.com/capacityType=ON_DEMAND
+                    eks.amazonaws.com/nodegroup=default-2026061911455399480000000f
+                    eks.amazonaws.com/nodegroup-image=ami-0bf9ba40d76255f2c
+                    eks.amazonaws.com/sourceLaunchTemplateId=lt-0567601009f21d7ec
+                    eks.amazonaws.com/sourceLaunchTemplateVersion=1
+                    failure-domain.beta.kubernetes.io/region=eu-west-1
+                    failure-domain.beta.kubernetes.io/zone=eu-west-1a
+                    k8s.io/cloud-provider-aws=350a5df9b1668a55e0cddd180565c096
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=ip-10-0-1-244.eu-west-1.compute.internal
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=t3.medium
+                    topology.ebs.csi.aws.com/zone=eu-west-1a
+                    topology.k8s.aws/zone-id=euw1-az2
+                    topology.kubernetes.io/region=eu-west-1
+                    topology.kubernetes.io/zone=eu-west-1a
+Annotations:        alpha.kubernetes.io/provided-node-ip: 10.0.1.244
+                    csi.volume.kubernetes.io/nodeid: {"ebs.csi.aws.com":"i-03eca8f70a6ceec45"}
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Fri, 19 Jun 2026 13:46:57 +0200
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  ip-10-0-1-244.eu-west-1.compute.internal
+  AcquireTime:     <unset>
+  RenewTime:       Fri, 26 Jun 2026 04:03:14 +0200
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Fri, 26 Jun 2026 04:02:57 +0200   Fri, 19 Jun 2026 13:46:54 +0200   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Fri, 26 Jun 2026 04:02:57 +0200   Fri, 19 Jun 2026 13:46:54 +0200   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Fri, 26 Jun 2026 04:02:57 +0200   Fri, 19 Jun 2026 13:46:54 +0200   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Fri, 26 Jun 2026 04:02:57 +0200   Fri, 19 Jun 2026 13:47:09 +0200   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:   10.0.1.244
+  InternalDNS:  ip-10-0-1-244.eu-west-1.compute.internal
+  Hostname:     ip-10-0-1-244.eu-west-1.compute.internal
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20893676Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3926448Ki
+  pods:               17
+Allocatable:
+  cpu:                1930m
+  ephemeral-storage:  18181869946
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3371440Ki
+  pods:               17
+System Info:
+  Machine ID:                 ec2c16127cbbf5db4bbc8f609e90adb5
+  System UUID:                ec2c1612-7cbb-f5db-4bbc-8f609e90adb5
+  Boot ID:                    a1007828-87c4-44c1-88b6-1a3f5826a53d
+  Kernel Version:             6.12.90-120.164.amzn2023.x86_64
+  OS Image:                   Amazon Linux 2023.12.20260608
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.2.4+unknown
+  Kubelet Version:            v1.33.12-eks-0de9cde
+  Kube-Proxy Version:         
+ProviderID:                   aws:///eu-west-1a/i-03eca8f70a6ceec45
+Non-terminated Pods:          (16 in total)
+  Namespace                   Name                                                     CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                     ------------  ----------  ---------------  -------------  ---
+  argocd                      argocd-dex-server-55cb7555d-xk6wz                        0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d13h
+  argocd                      argocd-redis-f988b8d44-zjpqb                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d13h
+  argocd                      argocd-repo-server-59dc69f95-nctm2                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d13h
+  cnpg-system                 cloudnativepg-operator-cloudnative-pg-75846766d-mlscd    0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d12h
+  ingress-nginx               ingress-nginx-controller-5548987697-m2fwt                100m (5%)     0 (0%)      90Mi (2%)        0 (0%)         6d13h
+  kube-system                 aws-node-q6w5w                                           50m (2%)      0 (0%)      0 (0%)           0 (0%)         6d14h
+  kube-system                 coredns-66c598b475-rqxsn                                 100m (5%)     0 (0%)      70Mi (2%)        170Mi (5%)     6d14h
+  kube-system                 ebs-csi-controller-7f99757f7-6vw7z                       60m (3%)      0 (0%)      232Mi (7%)       1312Mi (39%)   6d14h
+  kube-system                 ebs-csi-node-5xfvb                                       30m (1%)      0 (0%)      104Mi (3%)       320Mi (9%)     6d14h
+  kube-system                 eks-pod-identity-agent-st2bq                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d14h
+  kube-system                 kube-proxy-n5hg5                                         100m (5%)     0 (0%)      0 (0%)           0 (0%)         6d14h
+  kube-system                 metrics-server-5dd7b49d79-xt7tl                          100m (5%)     0 (0%)      200Mi (6%)       0 (0%)         6d12h
+  observability               observability-prometheus-node-exporter-mmqrv             0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d12h
+  poc19-capacity-tenant-a     client-deployment-5bb5b5bbc8-hmmqv                       100m (5%)     500m (25%)  256Mi (7%)       768Mi (23%)    31h
+  poc19-capacity-tenant-a     server-deployment-bf75777f4-rcntw                        200m (10%)    500m (25%)  256Mi (7%)       512Mi (15%)    32h
+  poc19-capacity-tenant-b     server-deployment-6499bb6b95-m2c9s                       200m (10%)    500m (25%)  256Mi (7%)       512Mi (15%)    32h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests      Limits
+  --------           --------      ------
+  cpu                1040m (53%)   1500m (77%)
+  memory             1464Mi (44%)  3594Mi (109%)
+  ephemeral-storage  0 (0%)        0 (0%)
+  hugepages-1Gi      0 (0%)        0 (0%)
+  hugepages-2Mi      0 (0%)        0 (0%)
+Events:              <none>
+
+
+Name:               ip-10-0-2-252.eu-west-1.compute.internal
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=t3.medium
+                    beta.kubernetes.io/os=linux
+                    eks.amazonaws.com/capacityType=ON_DEMAND
+                    eks.amazonaws.com/nodegroup=default-2026061911455399480000000f
+                    eks.amazonaws.com/nodegroup-image=ami-0bf9ba40d76255f2c
+                    eks.amazonaws.com/sourceLaunchTemplateId=lt-0567601009f21d7ec
+                    eks.amazonaws.com/sourceLaunchTemplateVersion=1
+                    failure-domain.beta.kubernetes.io/region=eu-west-1
+                    failure-domain.beta.kubernetes.io/zone=eu-west-1b
+                    k8s.io/cloud-provider-aws=350a5df9b1668a55e0cddd180565c096
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=ip-10-0-2-252.eu-west-1.compute.internal
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=t3.medium
+                    topology.ebs.csi.aws.com/zone=eu-west-1b
+                    topology.k8s.aws/zone-id=euw1-az3
+                    topology.kubernetes.io/region=eu-west-1
+                    topology.kubernetes.io/zone=eu-west-1b
+Annotations:        alpha.kubernetes.io/provided-node-ip: 10.0.2.252
+                    csi.volume.kubernetes.io/nodeid: {"ebs.csi.aws.com":"i-0a4048a5cc38dbd43"}
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Fri, 19 Jun 2026 13:46:57 +0200
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  ip-10-0-2-252.eu-west-1.compute.internal
+  AcquireTime:     <unset>
+  RenewTime:       Fri, 26 Jun 2026 04:03:13 +0200
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Fri, 26 Jun 2026 04:01:24 +0200   Fri, 19 Jun 2026 13:46:53 +0200   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Fri, 26 Jun 2026 04:01:24 +0200   Fri, 19 Jun 2026 13:46:53 +0200   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Fri, 26 Jun 2026 04:01:24 +0200   Fri, 19 Jun 2026 13:46:53 +0200   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Fri, 26 Jun 2026 04:01:24 +0200   Fri, 19 Jun 2026 13:47:10 +0200   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:   10.0.2.252
+  InternalDNS:  ip-10-0-2-252.eu-west-1.compute.internal
+  Hostname:     ip-10-0-2-252.eu-west-1.compute.internal
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20893676Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3926444Ki
+  pods:               17
+Allocatable:
+  cpu:                1930m
+  ephemeral-storage:  18181869946
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3371436Ki
+  pods:               17
+System Info:
+  Machine ID:                 ec2d0374198087b93ee5b82344c3e561
+  System UUID:                ec2d0374-1980-87b9-3ee5-b82344c3e561
+  Boot ID:                    8eb3fca5-2457-4e91-b270-f12a9f513d60
+  Kernel Version:             6.12.90-120.164.amzn2023.x86_64
+  OS Image:                   Amazon Linux 2023.12.20260608
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.2.4+unknown
+  Kubelet Version:            v1.33.12-eks-0de9cde
+  Kube-Proxy Version:         
+ProviderID:                   aws:///eu-west-1b/i-0a4048a5cc38dbd43
+Non-terminated Pods:          (13 in total)
+  Namespace                   Name                                                 CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                 ------------  ----------  ---------------  -------------  ---
+  argocd                      argocd-application-controller-0                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d13h
+  argocd                      argocd-applicationset-controller-6856b6d65f-g777m    0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d13h
+  argocd                      argocd-notifications-controller-7b5f485f7f-f2hff     0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d13h
+  argocd                      argocd-server-6bb986f5dd-mgklr                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d13h
+  kube-system                 aws-node-7s2xs                                       50m (2%)      0 (0%)      0 (0%)           0 (0%)         6d14h
+  kube-system                 coredns-66c598b475-84zmb                             100m (5%)     0 (0%)      70Mi (2%)        170Mi (5%)     6d14h
+  kube-system                 ebs-csi-controller-7f99757f7-gnw5h                   60m (3%)      0 (0%)      232Mi (7%)       1312Mi (39%)   6d14h
+  kube-system                 ebs-csi-node-rnfn9                                   30m (1%)      0 (0%)      104Mi (3%)       320Mi (9%)     6d14h
+  kube-system                 eks-pod-identity-agent-8rg6s                         0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d14h
+  kube-system                 kube-proxy-prfdw                                     100m (5%)     0 (0%)      0 (0%)           0 (0%)         6d14h
+  observability               observability-prometheus-node-exporter-kdmfw         0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d12h
+  poc19-capacity-tenant-a     server-deployment-bf75777f4-qzb4m                    200m (10%)    500m (25%)  256Mi (7%)       512Mi (15%)    32h
+  poc19-capacity-tenant-b     server-deployment-6499bb6b95-7t69w                   200m (10%)    500m (25%)  256Mi (7%)       512Mi (15%)    32h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests     Limits
+  --------           --------     ------
+  cpu                740m (38%)   1 (51%)
+  memory             918Mi (27%)  2826Mi (85%)
+  ephemeral-storage  0 (0%)       0 (0%)
+  hugepages-1Gi      0 (0%)       0 (0%)
+  hugepages-2Mi      0 (0%)       0 (0%)
+Events:              <none>
+
+
+Name:               ip-10-0-2-63.eu-west-1.compute.internal
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=t3.medium
+                    beta.kubernetes.io/os=linux
+                    eks.amazonaws.com/capacityType=ON_DEMAND
+                    eks.amazonaws.com/nodegroup=default-2026061911455399480000000f
+                    eks.amazonaws.com/nodegroup-image=ami-0bf9ba40d76255f2c
+                    eks.amazonaws.com/sourceLaunchTemplateId=lt-0567601009f21d7ec
+                    eks.amazonaws.com/sourceLaunchTemplateVersion=1
+                    failure-domain.beta.kubernetes.io/region=eu-west-1
+                    failure-domain.beta.kubernetes.io/zone=eu-west-1b
+                    k8s.io/cloud-provider-aws=350a5df9b1668a55e0cddd180565c096
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=ip-10-0-2-63.eu-west-1.compute.internal
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=t3.medium
+                    topology.ebs.csi.aws.com/zone=eu-west-1b
+                    topology.k8s.aws/zone-id=euw1-az3
+                    topology.kubernetes.io/region=eu-west-1
+                    topology.kubernetes.io/zone=eu-west-1b
+Annotations:        alpha.kubernetes.io/provided-node-ip: 10.0.2.63
+                    csi.volume.kubernetes.io/nodeid: {"ebs.csi.aws.com":"i-0659e07df8ee695d6"}
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Fri, 19 Jun 2026 21:36:48 +0200
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  ip-10-0-2-63.eu-west-1.compute.internal
+  AcquireTime:     <unset>
+  RenewTime:       Fri, 26 Jun 2026 04:03:19 +0200
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Fri, 26 Jun 2026 03:59:23 +0200   Fri, 19 Jun 2026 21:36:44 +0200   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     False   Fri, 26 Jun 2026 03:59:23 +0200   Fri, 19 Jun 2026 21:36:44 +0200   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure      False   Fri, 26 Jun 2026 03:59:23 +0200   Fri, 19 Jun 2026 21:36:44 +0200   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Fri, 26 Jun 2026 03:59:23 +0200   Fri, 19 Jun 2026 21:37:02 +0200   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:   10.0.2.63
+  InternalDNS:  ip-10-0-2-63.eu-west-1.compute.internal
+  Hostname:     ip-10-0-2-63.eu-west-1.compute.internal
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20893676Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3926444Ki
+  pods:               17
+Allocatable:
+  cpu:                1930m
+  ephemeral-storage:  18181869946
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3371436Ki
+  pods:               17
+System Info:
+  Machine ID:                 ec2ca05ee79eac2c91f2a3b09a6d61f8
+  System UUID:                ec2ca05e-e79e-ac2c-91f2-a3b09a6d61f8
+  Boot ID:                    64ba3832-94e6-4b49-9eaa-a4bc8c2f793f
+  Kernel Version:             6.12.90-120.164.amzn2023.x86_64
+  OS Image:                   Amazon Linux 2023.12.20260608
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.2.4+unknown
+  Kubelet Version:            v1.33.12-eks-0de9cde
+  Kube-Proxy Version:         
+ProviderID:                   aws:///eu-west-1b/i-0659e07df8ee695d6
+Non-terminated Pods:          (11 in total)
+  Namespace                   Name                                            CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                            ------------  ----------  ---------------  -------------  ---
+  kube-system                 aws-node-5ptfg                                  50m (2%)      0 (0%)      0 (0%)           0 (0%)         6d6h
+  kube-system                 ebs-csi-node-cp4vv                              30m (1%)      0 (0%)      104Mi (3%)       320Mi (9%)     6d6h
+  kube-system                 eks-pod-identity-agent-7c2mv                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d6h
+  kube-system                 kube-proxy-msm58                                100m (5%)     0 (0%)      0 (0%)           0 (0%)         6d6h
+  observability               observability-prometheus-node-exporter-k4npb    0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d6h
+  poc19-capacity-tenant-a     client-deployment-5bb5b5bbc8-wlsr9              100m (5%)     500m (25%)  256Mi (7%)       768Mi (23%)    31h
+  poc19-capacity-tenant-a     server-deployment-bf75777f4-znkwd               200m (10%)    500m (25%)  256Mi (7%)       512Mi (15%)    32h
+  poc19-capacity-tenant-b     client-deployment-fcb9dfdfd-lqkwc               100m (5%)     300m (15%)  256Mi (7%)       512Mi (15%)    31h
+  poc19-capacity-tenant-b     postgres-deployment-76ff95bd89-fg4gw            200m (10%)    500m (25%)  256Mi (7%)       512Mi (15%)    31m
+  poc19-capacity-tenant-b     server-deployment-6499bb6b95-bnbcw              200m (10%)    500m (25%)  256Mi (7%)       512Mi (15%)    32h
+  postgres-ha                 postgres-ha-1                                   0 (0%)        0 (0%)      0 (0%)           0 (0%)         6d7h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests      Limits
+  --------           --------      ------
+  cpu                980m (50%)    2300m (119%)
+  memory             1384Mi (42%)  3136Mi (95%)
+  ephemeral-storage  0 (0%)        0 (0%)
+  hugepages-1Gi      0 (0%)        0 (0%)
+  hugepages-2Mi      0 (0%)        0 (0%)
+Events:              <none>

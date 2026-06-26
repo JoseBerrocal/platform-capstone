@@ -1,0 +1,45 @@
+Name:                   client-deployment
+Namespace:              poc19-capacity-tenant-a
+CreationTimestamp:      Wed, 24 Jun 2026 18:15:04 +0200
+Labels:                 <none>
+Annotations:            argocd.argoproj.io/tracking-id: poc19-capacity-tenant-a-oci:apps/Deployment:poc19-capacity-tenant-a/client-deployment
+                        deployment.kubernetes.io/revision: 3
+Selector:               component=web
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:           component=web
+  Annotations:      kubectl.kubernetes.io/restartedAt: 2026-06-24T19:40:07+02:00
+  Service Account:  client-sa
+  Containers:
+   client:
+    Image:           joseberrocal/poc09-client:ef84342
+    Port:            3000/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    Limits:
+      cpu:     500m
+      memory:  768Mi
+    Requests:
+      cpu:        100m
+      memory:     256Mi
+    Environment:  <none>
+    Mounts:
+      /app/node_modules/.cache from react-cache (rw)
+  Volumes:
+   react-cache:
+    Type:          EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:        
+    SizeLimit:     <unset>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  client-deployment-577578cdd5 (0/0 replicas created), client-deployment-ff6856f78 (0/0 replicas created)
+NewReplicaSet:   client-deployment-5bb5b5bbc8 (2/2 replicas created)
+Events:          <none>

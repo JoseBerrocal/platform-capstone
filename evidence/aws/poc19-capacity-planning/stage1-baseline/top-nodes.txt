@@ -1,0 +1,5 @@
+NAME                                       CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+ip-10-0-1-118.eu-west-1.compute.internal   178m         9%       2040Mi          61%         
+ip-10-0-1-244.eu-west-1.compute.internal   92m          4%       1890Mi          57%         
+ip-10-0-2-252.eu-west-1.compute.internal   115m         5%       1519Mi          46%         
+ip-10-0-2-63.eu-west-1.compute.internal    49m          2%       1501Mi          45%         

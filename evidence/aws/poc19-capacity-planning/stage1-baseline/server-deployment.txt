@@ -1,0 +1,45 @@
+Name:                   server-deployment
+Namespace:              poc19-capacity-tenant-a
+CreationTimestamp:      Wed, 24 Jun 2026 18:15:04 +0200
+Labels:                 <none>
+Annotations:            argocd.argoproj.io/tracking-id: poc19-capacity-tenant-a-oci:apps/Deployment:poc19-capacity-tenant-a/server-deployment
+                        deployment.kubernetes.io/revision: 3
+Selector:               component=server
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:           component=server
+  Annotations:      kubectl.kubernetes.io/restartedAt: 2026-06-24T19:40:07+02:00
+  Service Account:  server-sa
+  Containers:
+   server:
+    Image:           joseberrocal/poc09-server:ef84342
+    Port:            5000/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    Limits:
+      cpu:     500m
+      memory:  512Mi
+    Requests:
+      cpu:     200m
+      memory:  256Mi
+    Environment:
+      PGUSER:      app
+      PGHOST:      postgres-ha-rw.postgres-ha.svc.cluster.local
+      PGPORT:      5432
+      PGDATABASE:  app
+      PGPASSWORD:  <set to the key 'PGPASSWORD' in secret 'postgres-ha-app-secret'>  Optional: false
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  server-deployment-c67d9b9bf (0/0 replicas created), server-deployment-6bf6987c85 (0/0 replicas created)
+NewReplicaSet:   server-deployment-bf75777f4 (3/3 replicas created)
+Events:          <none>
