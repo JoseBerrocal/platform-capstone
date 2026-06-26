@@ -1,0 +1,21 @@
+Name:                                                  server-hpa
+Namespace:                                             poc19-capacity-tenant-a
+Labels:                                                <none>
+Annotations:                                           argocd.argoproj.io/tracking-id: poc19-capacity-tenant-a-oci:autoscaling/HorizontalPodAutoscaler:poc19-capacity-tenant-a/server-hpa
+CreationTimestamp:                                     Fri, 26 Jun 2026 07:39:25 +0200
+Reference:                                             Deployment/server-deployment
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  0% (0) / 70%
+Min replicas:                                          2
+Max replicas:                                          6
+Deployment pods:                                       2 current / 2 desired
+Conditions:
+  Type            Status  Reason               Message
+  ----            ------  ------               -------
+  AbleToScale     True    ScaleDownStabilized  recent recommendations were higher than current one, applying the highest recent recommendation
+  ScalingActive   True    ValidMetricFound     the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  False   DesiredWithinRange   the desired count is within the acceptable range
+Events:
+  Type    Reason             Age                   From                       Message
+  ----    ------             ----                  ----                       -------
+  Normal  SuccessfulRescale  116s (x7 over 6m27s)  horizontal-pod-autoscaler  New size: 2; reason: All metrics below target
