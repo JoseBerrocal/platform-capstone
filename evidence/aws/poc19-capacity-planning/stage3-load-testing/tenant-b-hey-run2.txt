@@ -1,0 +1,49 @@
+02:33:43 casita@linux-mint ~ → hey -z 10m -c 100 http://tenant-b.platform-demo.local/api/
+
+Summary:
+  Total:	600.0443 secs
+  Slowest:	5.0903 secs
+  Fastest:	0.0399 secs
+  Average:	0.0610 secs
+  Requests/sec:	1638.5191
+  
+  Total data:	1979984 bytes
+  Size/request:	2 bytes
+
+Response time histogram:
+  0.040 [1]	|
+  0.545 [982697]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  1.050 [269]	|
+  1.555 [17]	|
+  2.060 [0]	|
+  2.565 [0]	|
+  3.070 [0]	|
+  3.575 [0]	|
+  4.080 [0]	|
+  4.585 [0]	|
+  5.090 [200]	|
+
+
+Latency distribution:
+  10% in 0.0442 secs
+  25% in 0.0475 secs
+  50% in 0.0546 secs
+  75% in 0.0659 secs
+  90% in 0.0795 secs
+  95% in 0.0900 secs
+  99% in 0.1316 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0000 secs, 0.0399 secs, 5.0903 secs
+  DNS-lookup:	0.0000 secs, 0.0000 secs, 0.0031 secs
+  req write:	0.0000 secs, 0.0000 secs, 0.0022 secs
+  resp wait:	0.0610 secs, 0.0398 secs, 5.0903 secs
+  resp read:	0.0000 secs, 0.0000 secs, 0.0027 secs
+
+Status code distribution:
+  [200]	983092 responses
+  [502]	92 responses
+
+
+
+02:44:00 casita@linux-mint ~ → 

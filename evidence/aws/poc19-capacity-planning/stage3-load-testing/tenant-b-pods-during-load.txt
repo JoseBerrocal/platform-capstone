@@ -1,0 +1,9 @@
+NAME                                   READY   STATUS    RESTARTS   AGE
+client-deployment-fcb9dfdfd-jqjpl      1/1     Running   0          2d18h
+client-deployment-fcb9dfdfd-lqkwc      1/1     Running   0          2d18h
+postgres-deployment-76ff95bd89-fg4gw   1/1     Running   0          35h
+server-deployment-6499bb6b95-7t69w     1/1     Running   0          2d19h
+server-deployment-6499bb6b95-cd24h     1/1     Running   0          18s
+server-deployment-6499bb6b95-cvl8r     1/1     Running   0          18s
+server-deployment-6499bb6b95-g5lmh     1/1     Running   0          36m
+server-deployment-6499bb6b95-m2c9s     1/1     Running   0          2d19h

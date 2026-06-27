@@ -1,0 +1,5 @@
+NAME                                 CPU(cores)   MEMORY(bytes)   
+client-deployment-5bb5b5bbc8-hmmqv   0m           169Mi           
+client-deployment-5bb5b5bbc8-wlsr9   1m           170Mi           
+server-deployment-bf75777f4-b87zl    0m           82Mi            
+server-deployment-bf75777f4-rcntw    0m           82Mi            

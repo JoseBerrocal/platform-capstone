@@ -1,0 +1,49 @@
+02:33:30 casita@linux-mint platform-capstone ±|main✔|→ hey -z 10m -c 100 http://tenant-a.platform-demo.local/api/
+
+Summary:
+  Total:	600.0533 secs
+  Slowest:	5.1860 secs
+  Fastest:	0.0397 secs
+  Average:	0.0602 secs
+  Requests/sec:	1660.7558
+  
+  Total data:	2013064 bytes
+  Size/request:	2 bytes
+
+Response time histogram:
+  0.040 [1]	|
+  0.554 [996147]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  1.069 [283]	|
+  1.584 [11]	|
+  2.098 [0]	|
+  2.613 [0]	|
+  3.127 [0]	|
+  3.642 [0]	|
+  4.157 [0]	|
+  4.671 [0]	|
+  5.186 [100]	|
+
+
+Latency distribution:
+  10% in 0.0438 secs
+  25% in 0.0471 secs
+  50% in 0.0543 secs
+  75% in 0.0656 secs
+  90% in 0.0792 secs
+  95% in 0.0899 secs
+  99% in 0.1306 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0000 secs, 0.0397 secs, 5.1860 secs
+  DNS-lookup:	0.0000 secs, 0.0000 secs, 0.0019 secs
+  req write:	0.0000 secs, 0.0000 secs, 0.0017 secs
+  resp wait:	0.0602 secs, 0.0396 secs, 5.1859 secs
+  resp read:	0.0000 secs, 0.0000 secs, 0.0028 secs
+
+Status code distribution:
+  [200]	996407 responses
+  [502]	135 responses
+
+
+
+02:43:56 casita@linux-mint platform-capstone ±|main✔|→ 
