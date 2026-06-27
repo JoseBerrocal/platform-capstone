@@ -45,10 +45,10 @@ resources:
       memory: 768Mi
   server:
     requests:
-      cpu: 200m
+      cpu: 100m
       memory: 256Mi
     limits:
-      cpu: 500m
+      cpu: 150m
       memory: 512Mi
   postgres:
     requests:
