@@ -10,7 +10,14 @@ Platform Engineering project demonstrating:
 * ArgoCD GitOps
 * Helm
 * Multi-tenant Kubernetes workloads
+* Observability
+* Horizontal Pod Autoscaling (HPA)
 * Prometheus & Grafana
+* Capacity Planning
+* Load Testing
+* Performance Analysis
+* Bottleneck Analysis
+* Platform Engineering
 * NGINX Ingress
 * Kubernetes Networking
 * Stateful Workload Recovery
@@ -137,103 +144,42 @@ Deployment options:
 
 ---
 
-## Operational Recovery Scenarios
+## Platform Engineering POCs
 
-The repository includes operational Kubernetes recovery exercises focused on real-world production incidents.
+| POC | Focus | Status |
+|-----|-------|--------|
+| POC09 | Local Kubernetes Platform | ✅ |
+| POC10 | Multi-Tenant Platform & GitOps | ✅ |
+| POC11 | Stateful Storage Recovery | ✅ |
+| POC12 | GitOps Drift Recovery | ✅ |
+| POC13 | Kubernetes Networking Incident | ✅ |
+| POC14 | Reliability & Observability | ✅ |
+| POC18 | Platform Security & Developer Guardrails | ✅ |
+| POC19 | Capacity Planning, Autoscaling & Performance Testing | ✅ Stage 3 |
 
-### POC11 — Stateful Storage Recovery
-
-Focus:
-
-- Persistent Volumes
-- Persistent Volume Claims
-- StorageClass
-- PostgreSQL recovery
-- Stateful workload troubleshooting
-
-### POC12 — GitOps Drift Recovery
-
-Focus:
-
-- ArgoCD reconciliation
-- Drift detection
-- Git as source of truth
-- Automated recovery
-
-### POC13 — Kubernetes Networking Incident
+### POC19 — Capacity Planning, Autoscaling & Performance Testing
 
 Focus:
 
-- Services
-- Endpoints
-- Ingress
-- NetworkPolicy
-- Production networking troubleshooting
-
-Typical troubleshooting workflow:
-
-```text
-Ingress
-   ↓
-Service
-   ↓
-Endpoints
-   ↓
-Pod
-```
-
-### POC18 — Platform Security & Developer Guardrails
-
-Focus:
-
-* RBAC
-* Service Accounts
-* Workload Identity
-* Least Privilege
-* Network Policies
-* Secrets Management
-* Pod Security
-* GitOps Security Controls
-* Security Incident Response
+- Resource Requests & Limits
+- Horizontal Pod Autoscaler (HPA)
+- Capacity Planning
+- Load Testing
+- Performance Analysis
+- Bottleneck Identification
+- Multi-Tenant Scaling
+- CloudNativePG
 
 Completed stages:
 
-* Stage 1 — RBAC & Multi-Tenant Access Control
-* Stage 2 — Service Accounts & Workload Identity
-* Stage 3 — Network Segmentation
-* Stage 4 — Secrets Management
-* Stage 5 — Secure Helm Platform Defaults
-* Stage 6 — GitOps Security Controls
-* Stage 7 — Security Incident Response & RCA
-
-Security controls implemented:
-
-* Namespace isolation
-* Multi-tenant RBAC
-* Dedicated workload identities
-* Workload-level RBAC
-* Network segmentation
-* Secret-based credential management
-* Secure container defaults
-* Non-root execution
-* Read-only root filesystems
-* RuntimeDefault seccomp profiles
-* Pod Security Admission enforcement
-* GitOps-managed security configuration
-
-Operational validation:
-
-* Secret failure recovery
-* Network security validation
-* Pod Security Admission enforcement testing
-* Security incident troubleshooting
-* Root cause analysis documentation
+- Stage 1 — Resource Sizing & Baseline
+- Stage 2 — Horizontal Pod Autoscaling
+- Stage 3 — Load Testing & Bottleneck Analysis
 
 Documentation:
 
 ```text
-docs/poc18-platform-security.md
-docs/poc18-phase7-security-incident-rca.md
+docs/poc19-capacity-planning.md
 ```
 
 ---
@@ -312,6 +258,7 @@ docs/
 ├── poc14-reliability-observability.md
 ├── poc18-phase7-security-incident-rca.md
 ├── poc18-platform-security.md
+├── poc19-capacity-planning.md
 ├── platform-operations.md
 └── README.md
 ```
