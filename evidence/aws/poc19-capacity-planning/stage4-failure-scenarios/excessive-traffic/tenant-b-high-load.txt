@@ -1,0 +1,9 @@
+NAME                                   CPU(cores)   MEMORY(bytes)   
+client-deployment-fcb9dfdfd-jqjpl      1m           184Mi           
+client-deployment-fcb9dfdfd-lqkwc      1m           170Mi           
+postgres-deployment-76ff95bd89-fg4gw   1m           28Mi            
+server-deployment-74c7d8d466-4k4dm     163m         83Mi            
+server-deployment-74c7d8d466-bsp5v     171m         84Mi            
+server-deployment-74c7d8d466-nqbmf     177m         82Mi            
+server-deployment-74c7d8d466-sdf9z     247m         84Mi            
+server-deployment-74c7d8d466-xxpct     171m         84Mi            

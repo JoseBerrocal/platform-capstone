@@ -140,3 +140,44 @@ Stage 3 validated the platform's ability to sustain production-like traffic whil
 ```text
 evidence/aws/poc19-capacity-planning/stage3-load-testing/
 ```
+
+## Stage 4 – Failure Scenarios & Performance Tuning
+
+### Objective
+
+Evaluate platform behavior under resource constraints and excessive traffic while validating recovery procedures and documenting tuning recommendations.
+
+### Scenarios
+
+#### CPU Saturation
+
+- Reduced CPU limits.
+- Observed CPU saturation.
+- Verified HPA scale-up.
+- Restored production limits.
+
+#### Memory Exhaustion
+
+- Reduced memory limits.
+- Triggered OOMKilled events.
+- Verified workload recovery after restoring limits.
+
+#### Excessive Traffic
+
+- Executed sustained high-concurrency load tests against both tenants.
+- Observed HPA scaling.
+- Monitored cluster and workload metrics in Grafana.
+- Captured operational evidence.
+
+### Outcome
+
+- Platform recovered successfully after each failure scenario.
+- HPA continued to operate correctly.
+- No persistent failures remained after restoring production configuration.
+- Operational tuning recommendations documented.
+
+### Evidence
+
+```text
+evidence/aws/poc19-capacity-planning/stage4-failure-scenarios/
+```

@@ -1,0 +1,51 @@
+Name:                   server-deployment
+Namespace:              poc19-capacity-tenant-b
+CreationTimestamp:      Wed, 24 Jun 2026 18:13:34 +0200
+Labels:                 <none>
+Annotations:            argocd.argoproj.io/tracking-id: poc19-capacity-tenant-b-oci:apps/Deployment:poc19-capacity-tenant-b/server-deployment
+                        deployment.kubernetes.io/revision: 10
+Selector:               component=server
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:           component=server
+  Annotations:      kubectl.kubernetes.io/restartedAt: 2026-06-28T06:56:21+02:00
+  Service Account:  server-sa
+  Containers:
+   server:
+    Image:           joseberrocal/poc09-server:ef84342
+    Port:            5000/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    Limits:
+      cpu:     150m
+      memory:  512Mi
+    Requests:
+      cpu:     100m
+      memory:  256Mi
+    Environment:
+      PGUSER:      app
+      PGHOST:      postgres-cluster-ip-service
+      PGPORT:      5432
+      PGDATABASE:  app
+      PGPASSWORD:  <set to the key 'PGPASSWORD' in secret 'pgpassword'>  Optional: false
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  server-deployment-5456d8ccd8 (0/0 replicas created), server-deployment-6499bb6b95 (0/0 replicas created), server-deployment-df4cd7659 (0/0 replicas created), server-deployment-7ccc8f9f4b (0/0 replicas created), server-deployment-c4d5f476f (0/0 replicas created), server-deployment-74c7d8d466 (0/0 replicas created)
+NewReplicaSet:   server-deployment-858c467778 (2/2 replicas created)
+Events:
+  Type    Reason             Age                    From                   Message
+  ----    ------             ----                   ----                   -------
+  Normal  ScalingReplicaSet  25m (x70 over 16h)     deployment-controller  (combined from similar events): Scaled up replica set server-deployment-c4d5f476f from 2 to 3
+  Normal  ScalingReplicaSet  15m (x11 over 26m)     deployment-controller  Scaled up replica set server-deployment-c4d5f476f from 2 to 3
+  Normal  ScalingReplicaSet  10m (x11 over 46m)     deployment-controller  Scaled up replica set server-deployment-74c7d8d466 from 2 to 3
+  Normal  ScalingReplicaSet  5m17s (x6 over 9m41s)  deployment-controller  Scaled up replica set server-deployment-858c467778 from 2 to 3

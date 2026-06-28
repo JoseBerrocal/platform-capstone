@@ -1,0 +1,71 @@
+Name:             server-deployment-c4d5f476f-6nb5r
+Namespace:        poc19-capacity-tenant-b
+Priority:         0
+Service Account:  server-sa
+Node:             ip-10-0-2-63.eu-west-1.compute.internal/10.0.2.63
+Start Time:       Sun, 28 Jun 2026 06:56:21 +0200
+Labels:           component=server
+                  pod-template-hash=c4d5f476f
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-06-28T06:56:21+02:00
+Status:           Running
+IP:               10.0.2.213
+IPs:
+  IP:           10.0.2.213
+Controlled By:  ReplicaSet/server-deployment-c4d5f476f
+Containers:
+  server:
+    Container ID:    containerd://184240080ce21ae8c4ecbf1e7d973927a74a9beae7c8f7f6f5ea24decc627a84
+    Image:           joseberrocal/poc09-server:ef84342
+    Image ID:        docker.io/joseberrocal/poc09-server@sha256:acee824717b1a3fe076bba72838ae92a5fd0c7a127289ee02cc089a358a90e9e
+    Port:            5000/TCP
+    Host Port:       0/TCP
+    SeccompProfile:  RuntimeDefault
+    State:           Waiting
+      Reason:        CrashLoopBackOff
+    Last State:      Terminated
+      Reason:        OOMKilled
+      Exit Code:     137
+      Started:       Sun, 28 Jun 2026 07:00:08 +0200
+      Finished:      Sun, 28 Jun 2026 07:00:13 +0200
+    Ready:           False
+    Restart Count:   5
+    Limits:
+      cpu:     500m
+      memory:  96Mi
+    Requests:
+      cpu:     200m
+      memory:  64Mi
+    Environment:
+      PGUSER:      app
+      PGHOST:      postgres-cluster-ip-service
+      PGPORT:      5432
+      PGDATABASE:  app
+      PGPASSWORD:  <set to the key 'PGPASSWORD' in secret 'pgpassword'>  Optional: false
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mphrj (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-mphrj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age                   From               Message
+  ----     ------     ----                  ----               -------
+  Normal   Scheduled  5m5s                  default-scheduler  Successfully assigned poc19-capacity-tenant-b/server-deployment-c4d5f476f-6nb5r to ip-10-0-2-63.eu-west-1.compute.internal
+  Normal   Pulled     78s (x6 over 5m4s)    kubelet            Container image "joseberrocal/poc09-server:ef84342" already present on machine
+  Normal   Created    78s (x6 over 5m4s)    kubelet            Created container: server
+  Normal   Started    78s (x6 over 5m4s)    kubelet            Started container server
+  Warning  BackOff    10s (x19 over 4m25s)  kubelet            Back-off restarting failed container server in pod server-deployment-c4d5f476f-6nb5r_poc19-capacity-tenant-b(27f72024-4b2d-4e5a-ab5e-1f49a827a0c7)

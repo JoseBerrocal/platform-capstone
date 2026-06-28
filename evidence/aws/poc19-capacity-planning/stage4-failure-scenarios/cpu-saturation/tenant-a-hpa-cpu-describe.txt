@@ -1,0 +1,35 @@
+Name:                                                  server-hpa
+Namespace:                                             poc19-capacity-tenant-a
+Labels:                                                <none>
+Annotations:                                           argocd.argoproj.io/tracking-id: poc19-capacity-tenant-a-oci:autoscaling/HorizontalPodAutoscaler:poc19-capacity-tenant-a/server-hpa
+CreationTimestamp:                                     Fri, 26 Jun 2026 07:39:25 +0200
+Reference:                                             Deployment/server-deployment
+Metrics:                                               ( current / target )
+  resource cpu on pods  (as a percentage of request):  121% (121m) / 70%
+Min replicas:                                          2
+Max replicas:                                          6
+Behavior:
+  Scale Up:
+    Stabilization Window: 0 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Pods     Value: 4    Period: 15 seconds
+      - Type: Percent  Value: 100  Period: 15 seconds
+  Scale Down:
+    Stabilization Window: 30 seconds
+    Select Policy: Max
+    Policies:
+      - Type: Percent  Value: 100  Period: 15 seconds
+Deployment pods:       6 current / 6 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+  ScalingLimited  True    TooManyReplicas   the desired replica count is more than the maximum replica count
+Events:
+  Type    Reason             Age                  From                       Message
+  ----    ------             ----                 ----                       -------
+  Normal  SuccessfulRescale  10m (x572 over 45h)  horizontal-pod-autoscaler  New size: 2; reason: All metrics below target
+  Normal  SuccessfulRescale  9m16s (x3 over 45h)  horizontal-pod-autoscaler  New size: 5; reason: cpu resource utilization (percentage of request) above target
+  Normal  SuccessfulRescale  45s (x18 over 14h)   horizontal-pod-autoscaler  New size: 6; reason: cpu resource utilization (percentage of request) above target

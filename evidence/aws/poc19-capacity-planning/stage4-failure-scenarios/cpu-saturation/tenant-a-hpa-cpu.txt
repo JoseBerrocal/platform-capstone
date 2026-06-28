@@ -1,0 +1,2 @@
+NAME         REFERENCE                      TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+server-hpa   Deployment/server-deployment   cpu: 121%/70%   2         6         6          45h

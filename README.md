@@ -155,7 +155,7 @@ Deployment options:
 | POC13 | Kubernetes Networking Incident | ✅ |
 | POC14 | Reliability & Observability | ✅ |
 | POC18 | Platform Security & Developer Guardrails | ✅ |
-| POC19 | Capacity Planning, Autoscaling & Performance Testing | ✅ Stage 3 |
+| POC19 | Capacity Planning, Autoscaling & Performance Testing | ✅ Stage 4 |
 
 ### POC19 — Capacity Planning, Autoscaling & Performance Testing
 

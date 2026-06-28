@@ -1,0 +1,8 @@
+NAME                                 READY   STATUS    RESTARTS   AGE
+client-deployment-5bb5b5bbc8-hmmqv   1/1     Running   0          3d12h
+client-deployment-5bb5b5bbc8-wlsr9   1/1     Running   0          3d12h
+server-deployment-bf75777f4-46rn4    1/1     Running   0          3m13s
+server-deployment-bf75777f4-4l2jb    1/1     Running   0          3m13s
+server-deployment-bf75777f4-6h48x    1/1     Running   0          27m
+server-deployment-bf75777f4-bp4mx    1/1     Running   0          4m58s
+server-deployment-bf75777f4-nmf8d    1/1     Running   0          141m

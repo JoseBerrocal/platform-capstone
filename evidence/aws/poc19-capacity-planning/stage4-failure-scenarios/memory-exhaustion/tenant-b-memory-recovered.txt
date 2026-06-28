@@ -1,0 +1,19 @@
+=== Pods ===
+NAME                                   READY   STATUS    RESTARTS   AGE
+client-deployment-fcb9dfdfd-jqjpl      1/1     Running   0          3d10h
+client-deployment-fcb9dfdfd-lqkwc      1/1     Running   0          3d10h
+postgres-deployment-76ff95bd89-fg4gw   1/1     Running   0          2d3h
+server-deployment-74c7d8d466-7cflv     1/1     Running   0          11m
+server-deployment-74c7d8d466-m9d68     1/1     Running   0          12m
+
+=== HPA ===
+NAME         REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+server-hpa   Deployment/server-deployment   cpu: 0%/70%   2         6         2          47h
+
+=== Pod Metrics ===
+NAME                                   CPU(cores)   MEMORY(bytes)   
+client-deployment-fcb9dfdfd-jqjpl      0m           185Mi           
+client-deployment-fcb9dfdfd-lqkwc      0m           170Mi           
+postgres-deployment-76ff95bd89-fg4gw   1m           28Mi            
+server-deployment-74c7d8d466-7cflv     0m           46Mi            
+server-deployment-74c7d8d466-m9d68     1m           45Mi            

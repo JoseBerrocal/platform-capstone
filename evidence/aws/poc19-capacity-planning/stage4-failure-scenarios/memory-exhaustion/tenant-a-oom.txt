@@ -1,0 +1,6 @@
+NAME                                 READY   STATUS             RESTARTS      AGE
+client-deployment-5bb5b5bbc8-hmmqv   1/1     Running            0             3d9h
+client-deployment-5bb5b5bbc8-wlsr9   1/1     Running            0             3d9h
+server-deployment-b9564f899-h4xsn    0/1     CrashLoopBackOff   5 (59s ago)   13m
+server-deployment-b9564f899-r429h    0/1     CrashLoopBackOff   5 (46s ago)   13m
+server-deployment-b9564f899-wvcrf    0/1     OOMKilled          5 (90s ago)   3m15s

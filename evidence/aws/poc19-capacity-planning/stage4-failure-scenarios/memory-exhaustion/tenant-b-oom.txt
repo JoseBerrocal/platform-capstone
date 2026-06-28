@@ -1,0 +1,7 @@
+NAME                                   READY   STATUS             RESTARTS      AGE
+client-deployment-fcb9dfdfd-jqjpl      1/1     Running            0             3d10h
+client-deployment-fcb9dfdfd-lqkwc      1/1     Running            0             3d10h
+postgres-deployment-76ff95bd89-fg4gw   1/1     Running            0             2d3h
+server-deployment-c4d5f476f-6nb5r      0/1     CrashLoopBackOff   5 (46s ago)   4m38s
+server-deployment-c4d5f476f-d97wp      0/1     CrashLoopBackOff   5 (23s ago)   3m43s
+server-deployment-c4d5f476f-hs5z8      0/1     CrashLoopBackOff   5 (33s ago)   4m36s

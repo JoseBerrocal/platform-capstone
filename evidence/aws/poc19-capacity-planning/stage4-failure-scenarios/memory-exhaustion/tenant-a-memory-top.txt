@@ -1,0 +1,3 @@
+NAME                                 CPU(cores)   MEMORY(bytes)   
+client-deployment-5bb5b5bbc8-hmmqv   0m           169Mi           
+client-deployment-5bb5b5bbc8-wlsr9   0m           170Mi           
